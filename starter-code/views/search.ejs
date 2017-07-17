@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>foodApp</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+   <h1> Search Page</h1>
+    <a href="index">Home</a>
+
+    <ul>
+      Choose from 
+      <% cuisine.forEach((cuisineName) => { %>
+      <li><%= cuisineName %></li>
+      <% }) %>
+    </ul>
+
+  </body>
+</html>
