@@ -77,22 +77,6 @@ authRoutes.post("/login", (req, res, next) => {
   });
 });
 
-authRoutes.get("/logout", (req, res, next) => {
-  req.session.destroy((err) => {
-    // cannot access session here
-    res.redirect("/login");
-  });
-});
-
 //----------------------------------------------------- Customer's LOGOUT
-authRoutes.get('/search', (req, res, next) => {
-  res.render('search', {
-    name: "FoodApp",
-    postalcode: ["80080", "80109", "80817"],
-    cuisine: ["italian", "greek", "chinese", "french", "sushi"]
-  });
- });
-
-
 
 module.exports = authRoutes;
