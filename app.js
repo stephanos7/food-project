@@ -12,6 +12,7 @@ const siteRoutes     = require('./routes/site-routes');
 
 const session        = require("express-session");
 const customerData   = require('connect-mongo') (session);
+const vendorData     = require('connect-mongo') (session);
 
 
 
@@ -25,8 +26,17 @@ app.use(logger("dev"));
 
 app.use(session ({
   secret: "basic-auth-secret",
-  cookie: { maxAge: 30000 },
+  cookie: { maxAge: 30000 }, //s6 minutes
   store: new customerData({
+    mongooseConnection: mongoose.connection,
+  ttl: 24 * 60 * 60
+  })
+}));
+
+app.use(session ({
+  secret: "basic-auth-secret",
+  cookie: { maxAge: 30000 }, //s6 minutes
+  store: new vendorData({
     mongooseConnection: mongoose.connection,
   ttl: 24 * 60 * 60
   })
