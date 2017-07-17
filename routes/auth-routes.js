@@ -1,6 +1,7 @@
 const express     = require('express');
 const authRoutes  = express.Router();
 const Customer    = require("../models/customer");
+const Vendor    = require("../models/vendor");
 const bcrypt      = require('bcrypt');
 const bcryptSalt  = 10;
 
@@ -8,9 +9,9 @@ const bcryptSalt  = 10;
 // --------------------------------------------------- Customer's SIGN UP
 authRoutes.get("/signup", (req, res, next) => {
     res.render("auth/signup");
-});
- //encrypt password 
+})
 authRoutes.post("/signup", (req, res, next) => {
+   //encrypt password 
   const username = req.body.username;
   const password = req.body.password;
   const salt     = bcrypt.genSaltSync(bcryptSalt);
@@ -46,9 +47,9 @@ authRoutes.post("/signup", (req, res, next) => {
 //----------------------------------------------------- Customer's LOGIN
 authRoutes.get("/login", (req, res, next) => {
     res.render("auth/login");
-});
-//require customer's data for login
+})
 authRoutes.post("/login", (req, res, next) => {
+  //require customer's data for login
   var username = req.body.username;
   var password = req.body.password;
   //checks if customers fills up the login form
@@ -76,7 +77,83 @@ authRoutes.post("/login", (req, res, next) => {
       }
   });
 });
-
 //----------------------------------------------------- Customer's LOGOUT
+
+
+// --------------------------------------------------- Vendor's SIGN UP
+authRoutes.get("/vendorsignup", (req, res, next) => {
+    res.render("auth/vendorsignup");
+});
+authRoutes.post("/vendorsignup", (req, res, next) => {
+   //encrypt password 
+  const email       = req.body.email;
+  const password    = req.body.password;
+  const salt        = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass    = bcrypt.hashSync(password, salt);
+  //creates new vendor 
+  const newVendor   = Vendor({
+    email,
+    password: hashPass,
+    name,
+    postcode,
+    cuisine,
+    capacity
+  });
+  //validate email & password insertion
+  if (email === "" || password === "") {
+    return res.render("auth/vendorsignup", {
+        errorMessage : "Indicate an email and password to sign up"
+    });
+  }
+  //validate if customer already exists
+  Vendor.findOne(
+    { "email": email }, //search condition
+    "email", //projection!
+    (err, vendor) => {
+      if (vendor !== null) {
+        return res.render("auth/vendorsignup", {
+          errorMessage: "The username already exists",
+        }); 
+      } else {
+          newVendor.save((err) => {
+            return res.redirect("/search");
+          })
+      }
+    })
+ });
+
+//----------------------------------------------------- Vendor's LOGIN
+authRoutes.get("/vendorlogin", (req, res, next) => {
+    res.render("auth/vendorlogin");
+});
+//require vendor's data for login
+authRoutes.post("/vendorlogin", (req, res, next) => {
+  var email    = req.body.email;
+  var password = req.body.password;
+  //checks if vendors fills up the login form
+  if (email === "" || password === "") {
+      return res.render("auth/vendorlogin", {
+        errorMessage: "Indicate a username and a password to sign up"
+      });
+  }
+  //check if the vendor email exists
+  Vendor.findOne({ "email": email }, (err, vendor) => {
+      if (err || !vendor) {
+       return res.render("auth/vendorlogin", {
+          errorMessage: "This email doesn't exist"
+        })
+      }
+      if (bcrypt.compareSync(password, vendor.password)) {
+        // Save the login in the session!
+        req.session.currentVendor = vendor;
+        res.redirect("/search");
+      } else {
+        res.render("auth/vendorlogin", {
+          errorMessage: "Incorrect password"
+        });
+        return;
+      } 
+  });
+});
 
 module.exports = authRoutes;

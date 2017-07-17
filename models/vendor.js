@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const vendorSchema = new Schema ({
-    username : String,
+    email    : String,
     password : String,
     name     : String,
     postcode : String, 

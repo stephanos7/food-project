@@ -20,13 +20,4 @@ siteRoutes.get("/search", (req, res, next) => {
     res.render('search');
 });
 
-//CUSTOMER LOGIN PAGE
-siteRoutes.use((req, res, next) => {
-    if(req.session.currentCustomer) {
-        next();
-    } else {
-        res.redirect("/login");
-    }
-});
-
 module.exports = siteRoutes;
