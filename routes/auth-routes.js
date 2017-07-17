@@ -1,7 +1,7 @@
 const express     = require('express');
 const authRoutes  = express.Router();
 const Customer    = require("../models/customer");
-const Vendor    = require("../models/vendor");
+const Vendor      = require("../models/vendor");
 const bcrypt      = require('bcrypt');
 const bcryptSalt  = 10;
 
@@ -50,8 +50,8 @@ authRoutes.get("/login", (req, res, next) => {
 })
 authRoutes.post("/login", (req, res, next) => {
   //require customer's data for login
-  var username = req.body.username;
-  var password = req.body.password;
+  const username = req.body.username;
+  const password = req.body.password;
   //checks if customers fills up the login form
   if (username === "" || password === "") {
       return res.render("auth/login", {
@@ -88,6 +88,10 @@ authRoutes.post("/vendorsignup", (req, res, next) => {
    //encrypt password 
   const email       = req.body.email;
   const password    = req.body.password;
+  const name        = req.body.name;
+  const postcode    = req.body.postcode;
+  const cuisine     = req.body.cuisine;
+  const capacity    = req.body.capacity;
   const salt        = bcrypt.genSaltSync(bcryptSalt);
   const hashPass    = bcrypt.hashSync(password, salt);
   //creates new vendor 
@@ -105,18 +109,18 @@ authRoutes.post("/vendorsignup", (req, res, next) => {
         errorMessage : "Indicate an email and password to sign up"
     });
   }
-  //validate if customer already exists
+  //validate if vendor already exists
   Vendor.findOne(
     { "email": email }, //search condition
     "email", //projection!
     (err, vendor) => {
       if (vendor !== null) {
         return res.render("auth/vendorsignup", {
-          errorMessage: "The username already exists",
+          errorMessage: "This email already exists",
         }); 
       } else {
           newVendor.save((err) => {
-            return res.redirect("/search");
+            return res.redirect("/index");
           })
       }
     })
@@ -128,8 +132,8 @@ authRoutes.get("/vendorlogin", (req, res, next) => {
 });
 //require vendor's data for login
 authRoutes.post("/vendorlogin", (req, res, next) => {
-  var email    = req.body.email;
-  var password = req.body.password;
+  const email    = req.body.email;
+  const password = req.body.password;
   //checks if vendors fills up the login form
   if (email === "" || password === "") {
       return res.render("auth/vendorlogin", {
@@ -146,7 +150,7 @@ authRoutes.post("/vendorlogin", (req, res, next) => {
       if (bcrypt.compareSync(password, vendor.password)) {
         // Save the login in the session!
         req.session.currentVendor = vendor;
-        res.redirect("/search");
+        res.redirect("/index");
       } else {
         res.render("auth/vendorlogin", {
           errorMessage: "Incorrect password"
