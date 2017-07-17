@@ -4,10 +4,11 @@ const Schema = mongoose.Schema;
 const vendorSchema = new Schema ({
     username : String,
     password : String,
+    name     : String,
     postcode : String, 
-    capacity : Number,
-    cuisine : String,
-    name : String
+    cuisine  : String,
+    capacity : Number
+   
 }, {
     timeStamps : {
         createdAt : "created_at",
