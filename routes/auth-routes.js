@@ -61,19 +61,20 @@ authRoutes.post("/login", (req, res, next) => {
   //check if the customer username exists
   Customer.findOne({ "username": username }, (err, customer) => {
       if (err || !customer) {
-       return res.render("auth/login", {
+       res.render("auth/login", {
           errorMessage: "This username doesn't exist"
         })
       }
       if (bcrypt.compareSync(password, customer.password)) {
         // Save the login in the session!
         req.session.currentCustomer = customer;
-        res.redirect("/search");
+       return res.redirect("/search");
       } else {
         res.render("auth/login", {
           errorMessage: "Incorrect password"
         });
-        return;
+        return res.redirect("/search");
+
       }
   });
 });
@@ -89,7 +90,10 @@ authRoutes.post("/vendorsignup", (req, res, next) => {
   const email       = req.body.email;
   const password    = req.body.password;
   const name        = req.body.name;
-  const postcode    = req.body.postcode;
+  const location    = {
+      type : 'Point', 
+      coordinates : [req.body.longitude, req.body.latitude]
+    };
   const cuisine     = req.body.cuisine;
   const capacity    = req.body.capacity;
   const salt        = bcrypt.genSaltSync(bcryptSalt);
@@ -99,10 +103,11 @@ authRoutes.post("/vendorsignup", (req, res, next) => {
     email,
     password: hashPass,
     name,
-    postcode,
+    location,
     cuisine,
     capacity
   });
+
   //validate email & password insertion
   if (email === "" || password === "") {
     return res.render("auth/vendorsignup", {
@@ -120,7 +125,8 @@ authRoutes.post("/vendorsignup", (req, res, next) => {
         }); 
       } else {
           newVendor.save((err) => {
-            return res.redirect("/index");
+            console.log(vendor)
+            res.render("search",{vendor});
           })
       }
     })
@@ -151,7 +157,7 @@ authRoutes.post("/vendorlogin", (req, res, next) => {
         // Save the login in the session!
         req.session.currentVendor = vendor;
         res.redirect("/dashboard");
-      } else {
+          } else {
         res.render("auth/vendorlogin", {
           errorMessage: "Incorrect password"
         });
@@ -159,5 +165,6 @@ authRoutes.post("/vendorlogin", (req, res, next) => {
       } 
   });
 });
+
 
 module.exports = authRoutes;

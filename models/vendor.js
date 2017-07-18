@@ -17,6 +17,8 @@ const vendorSchema = new Schema ({
     }
 });
 
+vendorSchema.index({ location: '2dsphere' });
+
 const Vendor = mongoose.model("Vendor", vendorSchema);
 
 module.exports = Vendor;

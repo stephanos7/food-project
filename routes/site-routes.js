@@ -1,6 +1,6 @@
 const express = require('express');
 const siteRoutes = express.Router();
-
+const Vendor      = require("../models/vendor");
 //INDEX PAGE
 siteRoutes.get("/index", (req, res, next) => {
     res.render('index');
@@ -13,9 +13,17 @@ siteRoutes.get("/", (req, res, next) => {
 
 
 siteRoutes.get("/search", (req, res, next) => {
-    res.render('search');
+   res.render('search');
 });
 
+siteRoutes.get("/search/:format", (req, res, next) => {
+    Vendor.find((error, vendors) => {
+    if (error) { next(error); }
+    else {
+        res.json(vendors)
+    }
+  })
+});
 
 siteRoutes.get("/dashboard", (req, res, next) => {
     res.render('dashboard');
