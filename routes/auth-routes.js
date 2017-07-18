@@ -120,7 +120,7 @@ authRoutes.post("/vendorsignup", (req, res, next) => {
         }); 
       } else {
           newVendor.save((err) => {
-            return res.redirect("/dashboard");
+            return res.redirect("/index");
           })
       }
     })
