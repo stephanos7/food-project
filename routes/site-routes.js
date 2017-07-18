@@ -12,6 +12,8 @@ siteRoutes.get("/", (req, res, next) => {
 
 
 
+
+
 //CUSTOMER PROTECTED SEARCH PAGE
 siteRoutes.use((req, res, next) => {
     if (req.session.currentCustomer) {
@@ -24,5 +26,20 @@ siteRoutes.use((req, res, next) => {
 siteRoutes.get("/search", (req, res, next) => {
     res.render('search');
 });
+
+
+// siteRoutes.use((req, res, next) => {
+//     if (req.session.currentVendor) {
+//         next();
+//     } else {
+//         res.redirect("/dashboard");
+//     }
+// });
+
+// siteRoutes.get("/dashboard", (req, res, next) => {
+//     res.render('dashboard');
+// });
+
+
 
 module.exports = siteRoutes;
