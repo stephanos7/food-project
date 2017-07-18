@@ -150,7 +150,7 @@ authRoutes.post("/vendorlogin", (req, res, next) => {
       if (bcrypt.compareSync(password, vendor.password)) {
         // Save the login in the session!
         req.session.currentVendor = vendor;
-        res.redirect("/index");
+        res.redirect("/dashboard");
       } else {
         res.render("auth/vendorlogin", {
           errorMessage: "Incorrect password"
