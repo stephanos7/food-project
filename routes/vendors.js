@@ -1,5 +1,6 @@
 const express = require('express');
 const Vendor  = require('../models/vendor');
+const Dish    = require("../models/dish");
 const router  = express.Router();
 
 const session        = require("express-session");
@@ -67,6 +68,7 @@ router.get("/newdish", (req, res, next) => {
 
 //POST NEW DISH TO BE INCLUDED IN THE MENU
 router.post("/newdish", (req, res, next) => { 
+    console.log("sad")
   const currentUser = req.session.currentVendor;
 
         const updates = {
@@ -74,11 +76,17 @@ router.post("/newdish", (req, res, next) => {
           dishQuantity: req.body.dishQuantity,
           dishPrice   : req.body.dishPrice
         };
-        
-    console.log(updates);
 
-  res.redirect("/dashboard");
+    const newDish = new Dish(updates);
+        
+    newDish.save((err) => {
+        if(err){
+            return next(err);
+        }
+        res.redirect("/vendors/dashboard");
+        })
 });
+
 
 
 module.exports = router;
