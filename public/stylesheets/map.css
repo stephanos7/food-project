@@ -45,13 +45,40 @@ h3 {
 }
 
 .cuisine-logos {
-  border: 40px solid black;
-  border-radius: 50%;
   margin: 10px;
   position: relative;
   top: 40px;
 }
 
+.healthy-cuisine {
+  border: 40px solid green;
+  border-radius: 50%;
+}
+
+.italian-cuisine {
+  border: 40px solid red;
+  border-radius: 50%;
+}
+
+.greek-cuisine {
+  border: 40px solid blue;
+  border-radius: 50%;
+}
+
+.spanish-cuisine {
+  border: 40px solid yellow;
+  border-radius: 50%;
+}
+
+.american-cuisine {
+  border: 40px solid lightblue;
+  border-radius: 50%;
+  }
+
+.international-cuisine {
+  border: 40px solid violet;
+  border-radius: 50%;
+}
 /* vendors list */
 #vendorList {
   width: 100%;
