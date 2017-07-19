@@ -5,10 +5,8 @@ function initMap() {
         });
         var geocoder = new google.maps.Geocoder();
 
-console.log("test")
-
 $.ajax({
-       url: "http://localhost:3000/search/json",
+       url: "http://localhost:3000/customers/search/json",
        type: "get",
        success: function(response){
          response.forEach(function(response){

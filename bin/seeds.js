@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/foodApp");
 const Vendor  = require("../models/vendor");
+const Dish = require("../models/vendor");
 
 const initialVendorData = [{
         email     : "maria@gmail.com",
@@ -10,7 +11,14 @@ const initialVendorData = [{
                       coordinates: [2.189792, 41.390627]
                     },
         cuisine   : "Italian",
-        capacity  : 5
+        capacity  : 5,
+        menu      : [
+                        {
+                            dishName    : "Pasta",
+                            dishQuantity : 20,
+                            dishPrice     : 9,   
+                        }
+                    ]
     
     },
     {
@@ -21,7 +29,15 @@ const initialVendorData = [{
                       coordinates: [2.162541, 41.387037]
                      },
         cuisine    : "Italian",
-        capacity   : 9
+        capacity   : 9,
+        menu      : [
+                        {
+                            dishName    : "Pizza",
+                            dishQuantity : 10,
+                            dishPrice     : 5,   
+                        }
+                    ]
+    
     },
     {
         email       : "nicola@gmail.com",
@@ -31,7 +47,15 @@ const initialVendorData = [{
                       coordinates: [2.165517, 41.368959]
                       },        
         cuisine     : "Italian",
-        capacity    : 12
+        capacity    : 12,
+        menu      : [
+                        {
+                            dishName    : "Pizza",
+                            dishQuantity : 10,
+                            dishPrice     : 5,   
+                        }
+                    ]
+
     },
     {
         email       : "alberto@live.com",
@@ -41,7 +65,14 @@ const initialVendorData = [{
                       coordinates: [2.121814, 41.392153]
                       }, 
         cuisine     : "Italian",
-        capacity    : 3
+        capacity    : 3,
+        menu        : [
+                        {
+                            dishName     : "Pizza",
+                            dishQuantity : 4,
+                            dishPrice    : 5,   
+                        }
+                    ]
     },
     {
         email       : "riccardo@gmail.com",
@@ -51,7 +82,14 @@ const initialVendorData = [{
                       coordinates: [2.171749, 41.397647]
                       }, 
         cuisine     : "Italian",
-        capacity    : 7
+        capacity    : 7,
+        menu      : [
+                        {
+                            dishName     : "Pizza",
+                            dishQuantity : 10,
+                            dishPrice    : 5,   
+                        }
+                    ]
     },
     {
         email       : "camila@ccc.com",
@@ -61,7 +99,14 @@ const initialVendorData = [{
                       coordinates: [2.170578, 41.390958]
                       }, 
         cuisine     : "Spanish",
-        capacity    : 5
+        capacity    : 5,
+        menu      : [
+                        {
+                            dishName     : "Paella",
+                            dishQuantity : 10,
+                            dishPrice    : 5,   
+                        }
+                    ]
     },
     {
         email       : "gregory@byrne.at",
@@ -71,7 +116,14 @@ const initialVendorData = [{
                       coordinates: [2.173521, 41.380698]
                       }, 
         cuisine     : "Italian",
-        capacity    : 3
+        capacity    : 3,
+        menu      : [
+                        {
+                            dishName     : "Pizza",
+                            dishQuantity : 10,
+                            dishPrice    : 5,   
+                        }
+                    ]
     }, 
     {
         email       : "joyce@heller.do",
@@ -81,7 +133,14 @@ const initialVendorData = [{
                       coordinates: [2.178880, 41.381546]
                       },
         cuisine     : "Spanish",
-        capacity    : 10
+        capacity    : 10,
+        menu      : [
+                        {
+                            dishName     : "Paella",
+                            dishQuantity : 8,
+                            dishPrice    : 5,   
+                        }
+                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -91,7 +150,14 @@ const initialVendorData = [{
                       coordinates: [2.179882, 41.378736]
                       },
         cuisine     : "Italian",
-        capacity    : 6
+        capacity    : 6,
+        menu      : [
+                        {
+                            dishName     : "Pizza",
+                            dishQuantity : 10,
+                            dishPrice    : 5,   
+                        }
+                    ]
     }
 ];
 

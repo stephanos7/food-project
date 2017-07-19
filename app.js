@@ -1,24 +1,28 @@
-const express        = require("express");
-const path           = require("path");
+const express                 = require("express");
+const path                    = require("path");
 const logger         = require("morgan");
 const cookieParser   = require("cookie-parser");
 const bodyParser     = require("body-parser");
-const mongoose       = require("mongoose");
 const app            = express();
-
 const bcrypt         = require('bcrypt');
-const customerRoutes = require('./routes/customer-routes');
-const indexRoutes    = require('./routes/index-routes');
-const vendorRoutes   = require('./routes/vendor-routes')
+
+//routes connection over here
+const customerAuthRoutes = require("./routes/customer-auth-routes");
+const customers = require('./routes/customers');
+const index = require('./routes/index');
+const vendors = require('./routes/vendors');
+const vendorAuthRoutes = require("./routes/vendor-auth-routes");
+
+// sessions connection over here
 const session        = require("express-session");
 const customerData   = require('connect-mongo') (session);
 const vendorData     = require('connect-mongo') (session);
 
 
-
 // Controllers
 
 // Mongoose configuration
+const mongoose       = require("mongoose");
 mongoose.connect("mongodb://localhost/foodApp");
 
 // Middlewares configuration
@@ -55,10 +59,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Routes
-app.use('/', indexRoutes);
-app.use('/', vendorRoutes);
-app.use('/', customerRoutes);
-
+app.use('/', index);
+app.use('/', vendorAuthRoutes);
+app.use('/', customerAuthRoutes);
+app.use('/vendors', vendors);
+app.use('/customers', customers);
 
 
 // catch 404 and forward to error handler
