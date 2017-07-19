@@ -42,7 +42,7 @@
           </div>
 
           <ul><% theVendorFound.menu.forEach((element) =>{ %>
-            <li>dish: <%= element.dishName %></li>
+            <li><%= element.dishName %> | Qty: <%= element.dishQuantity %> | $ <%= element.dishPrice %></li>
             <% }); %>
           </ul>
 

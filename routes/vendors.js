@@ -25,7 +25,9 @@ router.get("/dashboard", (req, res, next) => {
     if(err){
         console.log(err);
     }
-    console.log(theVendorFound);
+    //debug
+    //console.log(theVendorFound);
+    
     //pass the vendor object to the view to surface it's values
     res.render("vendors/dashboard", { theVendorFound })
     })
@@ -53,6 +55,31 @@ router.get("/newdish", (req, res, next) => {
     //}); 
 });
 
+//POST NEW DISH TO BE INCLUDED IN THE MENU
+router.post("/newdish", (req, res, next) => { 
+  
+  const currentUser = req.session.currentVendor;
+//   //debug
+//   console.log("this is the current user ::::", currentUser);
+
+  const newDish = {
+          dishName    : req.body.dishName,
+          dishQuantity: req.body.dishQuantity,
+          dishPrice   : req.body.dishPrice
+  };
+//   //debug
+//   console.log("this is the current dish ::::", newDish);
+
+//   //debug
+//     console.log("this is the current user's ID ::::", currentUser._id);
+    Vendor.findByIdAndUpdate(currentUser._id, {$push: {menu:newDish}},{new: true}, (err, theVendorFound) => {
+    if(err){
+        return next(err);
+    }
+    res.redirect("/vendors/dashboard");
+    })
+});
+
 
 //SHOW MENU
 // router.get("/:id", (req, res, next) => {
@@ -65,32 +92,5 @@ router.get("/newdish", (req, res, next) => {
 //     res.render("vendors/profile", {vendorReturned});
 //     }); 
 // });
-
-//POST NEW DISH TO BE INCLUDED IN THE MENU
-router.post("/newdish", (req, res, next) => { 
-  
-  const currentUser = req.session.currentVendor;
-  //debug
-  console.log("this is the current user ::::", currentUser);
-
-  const newDish = {
-          dishName    : req.body.dishName,
-          dishQuantity: req.body.dishQuantity,
-          dishPrice   : req.body.dishPrice
-  };
-  //debug
-  console.log("this is the current dish ::::", newDish);
-
-  //debug
-    console.log("this is the current user's ID ::::", currentUser._id);
-    Vendor.findByIdAndUpdate(currentUser._id, {$push: {menu:newDish}},{new: true}, (err, theVendorFound) => {
-    if(err){
-        return next(err);
-    }
-    res.redirect("/vendors/dashboard");
-    })
-});
-
-
 
 module.exports = router;
