@@ -22,9 +22,7 @@ $.ajax({
               <h5 class="vendor-name">${response.name}</h5>
               <p class="cuisine">${response.cuisine}</p>
             </div>
-            <button class="get-result">
-              <a href="#"> Show more</a>
-            </button>
+              <a href="#" class="button get-result"> Show more</a>
           </div>`
 
            $("#vendorList").append(vendorHtml);
