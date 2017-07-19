@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>foodApp</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+    <title>Your Dashboard!</title>
+    <link rel='stylesheet' href='/stylesheets/normalize.css' />
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+    
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+
+
+
+
   <body>
-    <h2>THE DASHBOARD!!!</h2>
-    <h3>Welcome <%= username %> :)!</h3>
-    <h4>Nice to see you again!</h4>
-  </body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+    <h2>Welcome to your dashboard <%= theVendorFound.name %>:)</h2>
+    </nav>
+
+    <!-- FLEXBOX LAYOUT -->
+    <div class="wrapper">
+      <div class="main-flex-parent">
+
+        <div class="about main-flex-child">
+          <div class="info-box">
+              ABOUT ME
+          </div>
+        </div>
+
+        <div class="orders main-flex-child">
+        
+
+        </div>
+
+        <div class="menu main-flex-child">
+          <h3 class="black-text">On your menu today:</h3>
+
+          </div>
+              <a class="new-button" href="newdish">New Dish</a>
+              <br>
+          </div>
+
+          <ul><% theVendorFound.menu.forEach((element) =>{ %>
+            <li>dish: <%= element.dishName %></li>
+            <% }); %>
+          </ul>
+
+
+       </div> 
+
+      </div>
+     </div>
+
   </body>
 </html>
