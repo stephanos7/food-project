@@ -25,7 +25,7 @@ router.get("/dashboard", (req, res, next) => {
     if(err){
         console.log(err);
     }
-
+    console.log(theVendorFound);
     //pass the vendor object to the view to surface it's values
     res.render("vendors/dashboard", { theVendorFound })
     })
@@ -54,7 +54,7 @@ router.get("/newdish", (req, res, next) => {
 });
 
 
-//GET THE NEW DISH FORM
+//SHOW MENU
 // router.get("/:id", (req, res, next) => {
 //     const vendorId = req.params.id;
 //         Vendor.findById(vendorId, (err, vendorReturned) => {
@@ -68,23 +68,27 @@ router.get("/newdish", (req, res, next) => {
 
 //POST NEW DISH TO BE INCLUDED IN THE MENU
 router.post("/newdish", (req, res, next) => { 
-    console.log("sad")
+  
   const currentUser = req.session.currentVendor;
+  //debug
+  console.log("this is the current user ::::", currentUser);
 
-        const updates = {
+  const newDish = {
           dishName    : req.body.dishName,
           dishQuantity: req.body.dishQuantity,
           dishPrice   : req.body.dishPrice
-        };
+  };
+  //debug
+  console.log("this is the current dish ::::", newDish);
 
-    const newDish = new Dish(updates);
-        
-    newDish.save((err) => {
-        if(err){
-            return next(err);
-        }
-        res.redirect("/vendors/dashboard");
-        })
+  //debug
+    console.log("this is the current user's ID ::::", currentUser._id);
+    Vendor.findByIdAndUpdate(currentUser._id, {$push: {menu:newDish}},{new: true}, (err, theVendorFound) => {
+    if(err){
+        return next(err);
+    }
+    res.redirect("/vendors/dashboard");
+    })
 });
 
 

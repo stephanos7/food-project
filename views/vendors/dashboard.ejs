@@ -35,12 +35,19 @@
 
         <div class="menu main-flex-child">
           <h3 class="black-text">On your menu today:</h3>
-          <div class="menu-item">
 
           </div>
               <a class="new-button" href="newdish">New Dish</a>
-            </form>
-        </div>
+              <br>
+          </div>
+
+          <ul><% theVendorFound.menu.forEach((element) =>{ %>
+            <li>dish: <%= element.dishName %></li>
+            <% }); %>
+          </ul>
+
+
+       </div> 
 
       </div>
      </div>
