@@ -7,9 +7,9 @@ const mongoose       = require("mongoose");
 const app            = express();
 
 const bcrypt         = require('bcrypt');
-const authRoutes     = require('./routes/auth-routes');
-const siteRoutes     = require('./routes/site-routes');
-
+const customerRoutes = require('./routes/customer-routes');
+const indexRoutes    = require('./routes/index-routes');
+const vendorRoutes   = require('./routes/vendor-routes')
 const session        = require("express-session");
 const customerData   = require('connect-mongo') (session);
 const vendorData     = require('connect-mongo') (session);
@@ -55,8 +55,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Routes
-app.use('/', authRoutes);
-app.use('/', siteRoutes);
+app.use('/', indexRoutes);
+app.use('/', vendorRoutes);
+app.use('/', customerRoutes);
 
 
 

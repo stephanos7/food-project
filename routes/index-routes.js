@@ -1,22 +1,25 @@
-const express = require('express');
-const siteRoutes = express.Router();
+const express     = require('express');
+const indexRoutes = express.Router();
 const Vendor      = require("../models/vendor");
+
+
 //INDEX PAGE
-siteRoutes.get("/index", (req, res, next) => {
+indexRoutes.get("/index", (req, res, next) => {
     res.render('index');
 });
 
-siteRoutes.get("/", (req, res, next) => {
+indexRoutes.get("/", (req, res, next) => {
     res.render('index');
 });
 
 
-
-siteRoutes.get("/search", (req, res, next) => {
+//SEARCH PAGE 
+indexRoutes.get("/search", (req, res, next) => {
    res.render('search');
 });
 
-siteRoutes.get("/search/:format", (req, res, next) => {
+//FORMAT TO PAST VENDOR'S DATA INTO THE GOOGLE MAP
+indexRoutes.get("/search/:format", (req, res, next) => {
     Vendor.find((error, vendors) => {
     if (error) { next(error); }
     else {
@@ -25,12 +28,13 @@ siteRoutes.get("/search/:format", (req, res, next) => {
   })
 });
 
-siteRoutes.get("/dashboard", (req, res, next) => {
+//DASHBOARD ROUTE
+indexRoutes.get("/dashboard", (req, res, next) => {
     res.render('dashboard');
 });
 
 //CUSTOMER PROTECTED SEARCH PAGE
-siteRoutes.use((req, res, next) => {
+indexRoutes.use((req, res, next) => {
     if (req.session.currentCustomer) {
         next();
     } else {
@@ -39,7 +43,7 @@ siteRoutes.use((req, res, next) => {
 });
 
 
-siteRoutes.use((req, res, next) => {
+indexRoutes.use((req, res, next) => {
     if (req.session.currentVendor) {
         next();
     } else {
@@ -47,4 +51,5 @@ siteRoutes.use((req, res, next) => {
     }
 });
 
-module.exports = siteRoutes;
+
+module.exports = indexRoutes;
