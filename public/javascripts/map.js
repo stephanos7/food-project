@@ -9,24 +9,27 @@ $.ajax({
        url: "http://localhost:3000/customers/search/json",
        type: "get",
        success: function(response){
-         response.forEach(function(response){
+         response.forEach(function(chef){
            let position = {
-             lat: response.location.coordinates[1],
-             lng: response.location.coordinates[0]
+             lat: chef.location.coordinates[1],
+             lng: chef.location.coordinates[0]
            };
            let marker = new google.maps.Marker({position, map});
 
-           let vendorHtml = `<div class="vendor-results">
+           let vendorHtml = `<div class="vendor-results row">
             <div class="vendor-img"> </div>
             <div class="vendor-description">
-              <h5 class="vendor-name">${response.name}</h5>
-              <p class="cuisine">${response.cuisine}</p>
+              <h5 class="vendor-name">${chef.name}</h5>
+              <p class="cuisine">${chef.cuisine}</p>
             </div>
               <a href="#" class="button get-result"> Show more</a>
-          </div>`
+          </div>`;
 
-           $("#vendorList").append(vendorHtml);
-           console.log(response.cuisine)
+          $("#vendorList").append(vendorHtml);
+
+          $(document).on('click', '.healthy-cuisine', function(evt){
+            $("#vendorList").hide(vendorHtml);
+          })
 
          });
        },

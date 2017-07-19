@@ -39,10 +39,15 @@ h3 {
   color: red; 
 }
 
+.cuisine-logo-container {
+  height: 60%;
+  margin-left: 8%;
+}
+
 .cuisine-logos {
   border: 40px solid black;
   border-radius: 50%;
-  margin: 60px;
+  margin: 10px;
   position: relative;
   top: 40px;
 }
