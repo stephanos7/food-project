@@ -24,51 +24,61 @@ router.get("/dashboard", (req, res, next) => {
     if(err){
         console.log(err);
     }
-    
+
     //pass the vendor object to the view to surface it's values
     res.render("vendors/dashboard", { theVendorFound })
     })
 });
 
-router.get("/", (req, res, next) => { 
+// router.get("/", (req, res, next) => { 
 
-    Vendor.find({}, (err, theVendorsRetrieved) => {
-    if(err){
-        console.log(err);
-    }
-    res.render("vendors/index", { theVendorsRetrieved })//PASS tobeRendered AS AN OBJECT! );
-    })
-});
+//     Vendor.find({}, (err, theVendorsRetrieved) => {
+//     if(err){
+//         console.log(err);
+//     }
+//     res.render("vendors/index", { theVendorsRetrieved })//PASS tobeRendered AS AN OBJECT! );
+//     })
+// });
 
-router.get("/:id/new", (req, res, next) => {
-    const vendorId = req.params.id;
-    Vendor.findById(vendorId, (err, vendorReturned) => {
-        if(err){
-            return next(err);
-        }
-        res.render("vendors/new", {vendorReturned});
-    }); 
+
+//ADD A NEW DISH TO YOUR MENU
+router.get("/newdish", (req, res, next) => {
+    // const vendorId = req.params.id;
+    // Vendor.findById(vendorId, (err, vendorReturned) => {
+    //     if(err){
+    //         return next(err);
+    //     }
+        res.render("vendors/newdish");
+    //}); 
 });
 
 
 //GET THE NEW DISH FORM
-router.get("/:id", (req, res, next) => {
-    const vendorId = req.params.id;
-        Vendor.findById(vendorId, (err, vendorReturned) => {
-    if(err){
-        return next(err);
-    }
-    //console.log(vendorReturned.menu);
-    res.render("vendors/profile", {vendorReturned});
-    }); 
-});
-
+// router.get("/:id", (req, res, next) => {
+//     const vendorId = req.params.id;
+//         Vendor.findById(vendorId, (err, vendorReturned) => {
+//     if(err){
+//         return next(err);
+//     }
+//     //console.log(vendorReturned.menu);
+//     res.render("vendors/profile", {vendorReturned});
+//     }); 
+// });
 
 //POST NEW DISH TO BE INCLUDED IN THE MENU
-router.post("/vendors/vendor.id/new", (req, res, next) => { 
-  let vendorId = req.params.id;
-  console.log('vendor post: ', vendorId);
-  res.redirect(`vendors/${vendor._id}`);
+router.post("/newdish", (req, res, next) => { 
+  const currentUser = req.session.currentVendor;
+
+        const updates = {
+          dishName    : req.body.dishName,
+          dishQuantity: req.body.dishQuantity,
+          dishPrice   : req.body.dishPrice
+        };
+        
+    console.log(updates);
+
+  res.redirect("/dashboard");
 });
+
 
 module.exports = router;

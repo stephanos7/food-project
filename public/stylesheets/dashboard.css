@@ -1,4 +1,12 @@
+.black-text{
+  color: black;
+}
+
 .wrapper{
+  padding-left: 2%;
+  padding-right: 2%;
+  font-family: "Lato", sans-serif;
+
 
 }
 
@@ -10,29 +18,41 @@
 
 .main-flex-parent{
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
   align-items: stretch;
 }
 
 .main-flex-child{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding: 10px;
 }
 
-.left-col{
-  background-color: navajowhite;
-  width: 70%;
+.about{
+  background-color:#afe8f4;
+  width: 62%;
 }
 
-.right-col{
-  background-color: lightcoral;
-  width: 25%;
+.orders{
+  background-color: #effafc;
+  width: 33%;
+  
+}
+
+.menu{
+ background-color: #7fdaee;
 }
 
 .info-box{
-  font-family: "Lato", sans-serif;
-  background-color: white;
-  position: relative;
-  width: 90%;
-  margin: 30px;
-  padding: 10px;
 
+}
+
+.new-button{
+  color: black;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 5px;
 }
