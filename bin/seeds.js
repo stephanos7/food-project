@@ -6,15 +6,15 @@ const Dish = require("../models/vendor");
 const initialVendorData = [{
         email     : "maria@gmail.com",
         password  : "lopez",
-        name      : "Maria Lopez",
+        name      : "La cocina de Maria",
         location  : { type : "Point", 
                       coordinates: [2.189792, 41.390627]
                     },
-        cuisine   : "Italian",
-        capacity  : 5,
+        cuisine   : "spanish",
+        capacity  : 20,
         menu      : [
                         {
-                            dishName    : "Pasta",
+                            dishName    : "Paella",
                             dishQuantity : 20,
                             dishPrice     : 9,   
                         }
@@ -24,16 +24,16 @@ const initialVendorData = [{
     {
         email      : "alessandro@gmail.com",
         password   : "cerri",
-        name       : "Alessandro Cerri",
+        name       : "Il Cuoco Italiano",
         location   : { type : "Point", 
                       coordinates: [2.162541, 41.387037]
                      },
-        cuisine    : "Italian",
+        cuisine    : "italian",
         capacity   : 9,
         menu      : [
                         {
                             dishName    : "Pizza",
-                            dishQuantity : 10,
+                            dishQuantity : 9,
                             dishPrice     : 5,   
                         }
                     ]
@@ -42,16 +42,16 @@ const initialVendorData = [{
     {
         email       : "nicola@gmail.com",
         password    : "daddabo",
-        name        : "Nicola D'Addabo",
+        name        : "Dal Paino",
         location    : { type : "Point", 
                       coordinates: [2.165517, 41.368959]
                       },        
-        cuisine     : "Italian",
+        cuisine     : "italian",
         capacity    : 12,
         menu      : [
                         {
-                            dishName    : "Pizza",
-                            dishQuantity : 10,
+                            dishName    : "Lasagna alla Bolognese",
+                            dishQuantity : 12,
                             dishPrice     : 5,   
                         }
                     ]
@@ -60,15 +60,15 @@ const initialVendorData = [{
     {
         email       : "alberto@live.com",
         password    : "piccioli",
-        name        : "Alberto Piccioli",
+        name        : "Alberto Cucina",
         location    : { type : "Point", 
                       coordinates: [2.121814, 41.392153]
                       }, 
-        cuisine     : "Italian",
-        capacity    : 3,
+        cuisine     : "italian",
+        capacity    : 4,
         menu        : [
                         {
-                            dishName     : "Pizza",
+                            dishName     : "Cotoletta alla milanese",
                             dishQuantity : 4,
                             dishPrice    : 5,   
                         }
@@ -77,15 +77,15 @@ const initialVendorData = [{
     {
         email       : "riccardo@gmail.com",
         password    : "conti",
-        name        : "Riccardo Conti",
+        name        : "La Vecchio Fico",
         location    : { type : "Point", 
                       coordinates: [2.171749, 41.397647]
                       }, 
-        cuisine     : "Italian",
-        capacity    : 7,
+        cuisine     : "italian",
+        capacity    : 10,
         menu      : [
                         {
-                            dishName     : "Pizza",
+                            dishName     : "Pasta alla Carbonara",
                             dishQuantity : 10,
                             dishPrice    : 5,   
                         }
@@ -94,16 +94,16 @@ const initialVendorData = [{
     {
         email       : "camila@ccc.com",
         password    : "castellano",
-        name        : "Camila castellano",
+        name        : "Cocinera",
         location    : { type : "Point", 
                       coordinates: [2.170578, 41.390958]
                       }, 
-        cuisine     : "Spanish",
+        cuisine     : "spanish",
         capacity    : 5,
         menu      : [
                         {
-                            dishName     : "Paella",
-                            dishQuantity : 10,
+                            dishName     : "Tortilla de Patatas",
+                            dishQuantity : 5,
                             dishPrice    : 5,   
                         }
                     ]
@@ -111,16 +111,16 @@ const initialVendorData = [{
     {
         email       : "gregory@byrne.at",
         password    : "Friedman",
-        name        : "Alina Barton",
+        name        : "Burguesa",
         location    : { type : "Point", 
                       coordinates: [2.173521, 41.380698]
                       }, 
-        cuisine     : "Italian",
-        capacity    : 3,
+        cuisine     : "american",
+        capacity    : 4,
         menu      : [
                         {
-                            dishName     : "Pizza",
-                            dishQuantity : 10,
+                            dishName     : "Hamburgers",
+                            dishQuantity : 4,
                             dishPrice    : 5,   
                         }
                     ]
@@ -128,16 +128,16 @@ const initialVendorData = [{
     {
         email       : "joyce@heller.do",
         password    : "Oakley",
-        name        : "Nora Clements",
+        name        : "New York Vibes",
         location    : { type : "Point", 
                       coordinates: [2.178880, 41.381546]
                       },
-        cuisine     : "Spanish",
+        cuisine     : "american",
         capacity    : 10,
         menu      : [
                         {
-                            dishName     : "Paella",
-                            dishQuantity : 8,
+                            dishName     : "BBB - Best Burgers in Barcelona",
+                            dishQuantity : 10,
                             dishPrice    : 5,   
                         }
                     ]
@@ -145,20 +145,207 @@ const initialVendorData = [{
     {
         email       : "allen@rao.gp",
         password    : "desai",
-        name        : "Charlotte Welch",
+        name        : "Tapass",
         location    : { type : "Point", 
                       coordinates: [2.179882, 41.378736]
                       },
-        cuisine     : "Italian",
-        capacity    : 6,
+        cuisine     : "spanish",
+        capacity    : 20,
         menu      : [
                         {
-                            dishName     : "Pizza",
+                            dishName     : "Tapas",
+                            dishQuantity : 20,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "mans",
+        name        : "Bocadilly",
+        location    : { type : "Point", 
+                      coordinates: [2.194064, 41.396587]
+                      },
+        cuisine     : "spanish",
+        capacity    : 10,
+        menu      : [
+                        {
+                            dishName     : "Bocadillos",
                             dishQuantity : 10,
                             dishPrice    : 5,   
                         }
                     ]
-    }
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "sensai",
+        name        : "Temakinhos Fusion",
+        location    : { type : "Point", 
+                      coordinates: [2.191371, 41.401424]
+                      },
+        cuisine     : "international",
+        capacity    : 13,
+        menu      : [
+                        {
+                            dishName     : "Temakis Fantasy",
+                            dishQuantity : 13,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "sushi",
+        name        : "Sushi Love",
+        location    : { type : "Point", 
+                      coordinates: [2.183155, 41.409232]
+                      },
+        cuisine     : "international",
+        capacity    : 20,
+        menu      : [
+                        {
+                            dishName     : "Nigiri Passion",
+                            dishQuantity : 20,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "vegan",
+        name        : "Vegan Dreams",
+        location    : { type : "Point", 
+                      coordinates: [2.175685, 41.412195]
+                      },
+        cuisine     : "healthy",
+        capacity    : 10,
+        menu      : [
+                        {
+                            dishName     : "Vegan Bowls",
+                            dishQuantity : 10,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "avo",
+        name        : "Avocados",
+        location    : { type : "Point", 
+                      coordinates: [2.170339, 41.411013]
+                      },
+        cuisine     : "healthy",
+        capacity    : 14,
+        menu      : [
+                        {
+                            dishName     : "Avocado Bruschettas",
+                            dishQuantity : 14,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "tofu",
+        name        : "Viaje Tofu",
+        location    : { type : "Point", 
+                      coordinates: [2.143265, 41.405191]
+                      },
+        cuisine     : "healthy",
+        capacity    : 6,
+        menu      : [
+                        {
+                            dishName     : "Tofu Burgers",
+                            dishQuantity : 6,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "juice",
+        name        : "Juice Bar",
+        location    : { type : "Point", 
+                      coordinates: [2.155942, 41.428766]
+                      },
+        cuisine     : "healthy",
+        capacity    : 20,
+        menu      : [
+                        {
+                            dishName     : "Juicy Smoothies",
+                            dishQuantity : 20,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "greek",
+        name        : "Greek Saladz",
+        location    : { type : "Point", 
+                      coordinates: [2.150759, 41.408962]
+                      },
+        cuisine     : "greek",
+        capacity    : 12,
+        menu      : [
+                        {
+                            dishName     : "Greek Salads",
+                            dishQuantity : 12,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    }, 
+    {
+        email       : "allen@rao.gp",
+        password    : "dakos",
+        name        : "Dakoss",
+        location    : { type : "Point", 
+                      coordinates: [2.159455, 41.384773]
+                      },
+        cuisine     : "greek",
+        capacity    : 5,
+        menu      : [
+                        {
+                            dishName     : "Dakos",
+                            dishQuantity : 5,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    }, 
+    {
+        email       : "allen@rao.gp",
+        password    : "calamares",
+        name        : "Fried Heaven",
+        location    : { type : "Point", 
+                      coordinates: [2.202024, 41.426658]
+                      },
+        cuisine     : "greek",
+        capacity    : 10,
+        menu      : [
+                        {
+                            dishName     : "Calamares Fritos",
+                            dishQuantity : 10,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    },
+    {
+        email       : "allen@rao.gp",
+        password    : "gracia",
+        name        : "Grecia",
+        location    : { type : "Point", 
+                      coordinates: [2.215011, 41.410157]
+                      },
+        cuisine     : "greek",
+        capacity    : 6,
+        menu      : [
+                        {
+                            dishName     : "Original Tzatziki Bar",
+                            dishQuantity : 6,
+                            dishPrice    : 5,   
+                        }
+                    ]
+    }                                                                                                
 ];
 
 Vendor.create(initialVendorData, (err, docs) => {
