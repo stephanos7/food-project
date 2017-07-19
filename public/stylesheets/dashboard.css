@@ -2,6 +2,11 @@
 
 }
 
+.navbar{
+  font-size: 1.2rem;
+  font-family: "Lato", sans-serif;
+  padding: 24px;
+}
 
 .main-flex-parent{
   display: flex;
@@ -23,10 +28,11 @@
 }
 
 .info-box{
+  font-family: "Lato", sans-serif;
   background-color: white;
   position: relative;
-  width: 87%;
-  margin: 3%;
-  padding: 3%;
+  width: 90%;
+  margin: 30px;
+  padding: 10px;
 
 }
