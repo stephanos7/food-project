@@ -44,9 +44,9 @@ vendorAuthRoutes.post("/vendor-signup", (req, res, next) => {
 
     var newVendor = Vendor({
       email,
-      name,
       password: hashPass,
       //location,
+      name,
       cuisine,
       capacity,
       menu

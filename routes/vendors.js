@@ -8,16 +8,26 @@ const vendorData     = require('connect-mongo') (session);
 
 //MIDDLEWARE TO ENSURE ALL FOLLOWING ROUTES ARE ACCESSIBLE ONLY BY SINGNED IN USERS
 router.use((req, res, next) => {
-  if (req.session.currentVendor) { next(); }
+  if (req.session.currentVendor) { 
+    next(); }
   else { res.redirect("/vendor-login"); }
 });
 
 
-//GET INDEX
+//GET DASHBOARD 
 router.get("/dashboard", (req, res, next) => {
-  res.render("vendors/dashboard",
-    { username: req.session.currentVendor.expires}
-  );
+    //get the signed-in user's id from the Session
+    const currentUser = req.session.currentVendor;
+
+    //query mongo with that id to get the current vendor object
+    Vendor.findById(currentUser._id, (err, theVendorFound) => {
+    if(err){
+        console.log(err);
+    }
+    
+    //pass the vendor object to the view to surface it's values
+    res.render("vendors/dashboard", { theVendorFound })
+    })
 });
 
 router.get("/", (req, res, next) => { 
