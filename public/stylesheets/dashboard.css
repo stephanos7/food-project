@@ -1,0 +1,32 @@
+.wrapper{
+
+}
+
+
+.main-flex-parent{
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.main-flex-child{
+}
+
+.left-col{
+  background-color: navajowhite;
+  width: 70%;
+}
+
+.right-col{
+  background-color: lightcoral;
+  width: 25%;
+}
+
+.info-box{
+  background-color: white;
+  position: relative;
+  width: 87%;
+  margin: 3%;
+  padding: 3%;
+
+}

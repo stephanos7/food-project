@@ -16,7 +16,7 @@ router.use((req, res, next) => {
 //GET INDEX
 router.get("/dashboard", (req, res, next) => {
   res.render("vendors/dashboard",
-    { username: req.session.currentVendor.email}
+    { username: req.session.currentVendor.expires}
   );
 });
 

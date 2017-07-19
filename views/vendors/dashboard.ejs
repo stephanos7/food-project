@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>foodApp</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+    <title>Your Dashboard!</title>
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+        <link rel='stylesheet' href='/stylesheets/normalize.css' />
+
+
+
+
   <body>
-    <h2>THE DASHBOARD!!!</h2>
-    <h3>Welcome <%= username %> :)!</h3>
-    <h4>Nice to see you again!</h4>
-  </body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+    <h2>Welcome to your dashboard, <%= username %> :)</h2>
+    </nav>
+
+    <!-- FLEXBOX LAYOUT -->
+    <div class="wrapper">
+
+      <div class="main-flex-parent">
+        <div class="left-col main-flex-child">
+          <div class="info-box">
+              ABOUT ME
+          </div>
+        </div>
+        <div class="right-col main-flex-child">
+        2
+
+        </div>
+      </div>
+
+     </div> 
   </body>
 </html>
