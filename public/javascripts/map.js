@@ -15,7 +15,19 @@ $.ajax({
              lng: response.location.coordinates[0]
            };
            let marker = new google.maps.Marker({position, map});
-           console.log(response.name)
+
+           let vendorHtml = `<div class="vendor-results">
+            <div class="vendor-img"> </div>
+            <div class="vendor-description">
+              <h5 class="vendor-name">${response.name}</h5>
+              <p class="cuisine">${response.cuisine}</p>
+            </div>
+            <button class="get-result">
+              <a href="#"> Show more</a>
+            </button>
+          </div>`
+
+           $("#vendorList").append(vendorHtml);
            console.log(response.cuisine)
 
          });
