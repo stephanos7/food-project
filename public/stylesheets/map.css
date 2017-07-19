@@ -92,6 +92,16 @@ h3 {
   height: 20%;
   border: 1px solid black;
   padding: 15px;
+  transition: all 300ms ease;
+}
+
+.vendor-results.hidden {
+  /* opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  height: 0; */
+  background: red;
+  border: 5px solid blue;
 }
 
 .vendor-img {
@@ -116,4 +126,4 @@ h3 {
   color: black;
   float: left;
   margin-top: 50px;
-3}
+}
