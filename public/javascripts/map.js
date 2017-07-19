@@ -81,7 +81,7 @@ $(document).on('click', '.cuisine-logos', function(evt){
   var chefCards = $(".vendor-results");
 
   chefCards.each(function(){
-    if (!$(this).hasClass('Italian')) {
+    if (!$(this).hasClass('italian')) {
       // Get the id of the element
       // split to get just the Number  ( number would be the index of the array of markers)
       // setMap to null for that index
