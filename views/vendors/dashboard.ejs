@@ -36,13 +36,13 @@
         <div class="menu main-flex-child">
           <h3 class="black-text">On your menu today:</h3>
 
-          </div>
+          <div>
               <a class="new-button" href="newdish">New Dish</a>
               <br>
           </div>
 
           <ul><% theVendorFound.menu.forEach((element) =>{ %>
-            <li><%= element.dishName %> | Qty: <%= element.dishQuantity %> | $ <%= element.dishPrice %></li>
+            <li class="menu-item"><%= element.dishName %> | Qty: <%= element.dishQuantity %> | $ <%= element.dishPrice %></li>
             <% }); %>
           </ul>
 

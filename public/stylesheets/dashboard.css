@@ -1,3 +1,11 @@
+a{
+  text-decoration: none;
+}
+ul, li{
+  list-style: none;
+  padding: 0;
+}
+
 .black-text{
   color: black;
 }
@@ -43,16 +51,33 @@
 
 .menu{
  background-color: #7fdaee;
+ width: 62%;
 }
 
 .info-box{
 
 }
 
-.new-button{
+.new-button {
   color: black;
   background-color: transparent;
   border: 1px solid black;
   border-radius: 3px;
+  padding: 5px;
+}
+
+
+.new-button:hover{
+  background-color: white;
+  border: 1px solid white;
+}
+
+.menu-list{
+  width: 90%;
+
+}
+
+.menu-item{
+  width: 90%;
   padding: 5px;
 }
