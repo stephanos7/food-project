@@ -71,6 +71,8 @@ function initMap() {
               <p class="dish">${chef.dish.dishName}</p> 
             </div>
             <input type="hidden" name="chefId" value="${chef._id}">
+            <input type="hidden" name="orderedItem" value="${chef.dish._id}">
+
               <button type="submit" class="button get-result"> Order now</button>
           </form>`;
 

@@ -32,7 +32,7 @@ app.use(logger("dev"));
 
 app.use(session ({
   secret: "basic-auth-secret",
-  cookie: { maxAge: 30000 }, //s6 minutes
+  cookie: { maxAge: 100000 }, //s6 minutes
   store: new customerData({
     mongooseConnection: mongoose.connection,
   ttl: 24 * 60 * 60
@@ -41,7 +41,7 @@ app.use(session ({
 
 app.use(session ({
   secret: "basic-auth-secret",
-  cookie: { maxAge: 30000 }, //s6 minutes
+  cookie: { maxAge: 100000 }, //s6 minutes
   store: new vendorData({
     mongooseConnection: mongoose.connection,
   ttl: 24 * 60 * 60
