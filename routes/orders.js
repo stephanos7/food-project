@@ -9,7 +9,8 @@ const customerData   = require('connect-mongo') (session);
 const vendorData     = require('connect-mongo') (session);
 
 router.post("/newOrder", (req, res, next) => {
-  console.log("these are the params: ", req.body)
+  console.log("these are the params: ", req.body.chefId)
+
   
 });
 
