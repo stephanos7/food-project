@@ -19,6 +19,7 @@ router.use((req, res, next) => {
 router.get("/dashboard", (req, res, next) => {
     //get the signed-in user's id from the Session
     const currentUser = req.session.currentVendor;
+    const menuPrompt = "tell us what you are cooking today!";
 
     //query mongo with that id to get the current vendor object
     Vendor.findById(currentUser._id, (err, theVendorFound) => {
@@ -40,7 +41,7 @@ router.get("/dashboard", (req, res, next) => {
     // }
     
     //pass the vendor object to the view to surface it's values
-    res.render("vendors/dashboard", { theVendorFound, check});
+    res.render("vendors/dashboard", { theVendorFound, check, menuPrompt});
     })
   });
 
