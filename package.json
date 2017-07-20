@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "seed": "node ./bin/seeds"
+    "seedone": "node ./bin/seedsone"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",

@@ -54,9 +54,28 @@ router.post("/addbio", (req, res, next) => {
   }
 
     Vendor.findByIdAndUpdate(currentUser._id, newBio, (err, theVendorFound) => {
-    if(err){
-        return next(err);
+  if (req.session.currentVendor) { next(); }
+  else { res.redirect("/vendor-login");  }
+});
+
+//GET DASHBOARD 
+router.get("/dashboard", (req, res, next) => {
+    //get the signed-in user’s id from the Session
+    const currentUser = req.session.currentVendor;
+
+   //query mongo with that id to get the current vendor object
+    Vendor.findById(currentUser._id, (err, theVendorFound) => {
+    if(err) {
+        console.log(err);
     }
+    return theVendorFound;
+      
+ //GET ORDERS ON VENDOR DASHBOARD
+    Order.find({ _orderedFrom : theVendorFound} , (err, theOrdersFound) => {
+    if(err){
+        console.log(err);
+    }
+
     res.redirect("/vendors/dashboard");
     });
 
@@ -66,6 +85,16 @@ router.post("/addbio", (req, res, next) => {
 router.get("/newdish", (req, res, next) => {
         res.render("vendors/newdish");
 });
+
+=======
+    console.log(theOrdersFound);
+    
+    //pass the vendor object to the view to surface it’s values
+    res.render("vendors/dashboard", {theVendorFound}, {theOrdersFound});
+    })
+    });
+});
+
 
 //POST NEW DISH TO BE INCLUDED IN THE MENU
 router.post("/newdish", (req, res, next) => { 
@@ -87,3 +116,4 @@ router.post("/newdish", (req, res, next) => {
 });
 
 module.exports = router;
+

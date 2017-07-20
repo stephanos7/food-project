@@ -32,11 +32,12 @@ router.get("/search/:format", (req, res, next) => {
   })
 });
 
-router.get("/dummy", (req, res, next) => {
-  const customerOrdering = req.session.currentCustomer;
-    console.log(customerOrdering);
 
-    res.render("customers/dummy", { customerOrdering });
-  });
+//router.get("/dummy", (req, res, next) => {
+  //const customerOrdering = req.session.currentCustomer;
+    //console.log(customerOrdering);
+
+    //res.render("customers/dummy", { customerOrdering });
+  //});
 
 module.exports = router;
