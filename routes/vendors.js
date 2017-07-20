@@ -28,14 +28,13 @@ router.get("/dashboard", (req, res, next) => {
     }
 
 //GET ORDERS ON VENDOR DASHBOARD
-    Order.find({"vendorEmail" : theVendorFound.emal}, (err, theOrdersFound) => {
+    Order.find({ _orderedFrom : currentUser._id} , (err, theOrdersFound) => {
     if(err){
         console.log(err);
     }
         console.log(theOrdersFound);
-        console.log(theVendorFound.cuisine)
     //pass the vendor object to the view to surface it's values
-    res.render("vendors/dashboard", { theVendorFound })
+    res.render("vendors/dashboard", {theVendorFound})
     })
     });
 });
@@ -86,6 +85,5 @@ router.post("/newdish", (req, res, next) => {
     res.redirect("/vendors/dashboard");
     });
 });
-
 
 module.exports = router;

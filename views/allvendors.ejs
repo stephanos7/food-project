@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Our Vendors!</title>
+    <link rel='stylesheet' href='/stylesheets/normalize.css' />
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+    
+
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- NAVBAR -->
+      <nav class="navbar">
+          <h2>Our incredible chefs</h2>
+      </nav>
+
+
+    <div class="wrapper">
+      <div class="main-flex-parent">
+        <div class="menu main-flex-child">
+
+          <ul>
+            <% vendorList.forEach((element) =>{ %>
+            <li class="menu-item"><%= element.name %></li>
+            <div class = "edit-item">
+                <a class="new-button" href="editdish">View Menu</a>
+            </div>
+            <div class = "edit-item">
+              <a class="tag-button <%element.cuisine %>"><%= element.cuisine %></a>
+            </div>
+           <% }); %>
+          </ul>
+
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+  </html>
