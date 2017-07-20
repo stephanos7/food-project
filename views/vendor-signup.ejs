@@ -24,10 +24,13 @@
     <label for="name">Name</label><br>
     <input type="text" name="name" placeholder="atgrandmas">
     <br><br>
-     <!-- location 
-    <label for="location">Location</label><br>
-    <input type="text" name="location" placeholder="41.397262, 2.188154">
-    <br><br> -->
+    <!-- location  -->
+    <label for='Address' class="form__label">
+    <span>Address</span>
+    </label>
+    <input id="address" type="text">
+    <input id="latitude" type="text" name="latitude" placeholder="Latitude" >
+    <input id="longitude" type="text" name="longitude" placeholder="Longitude">
     <!-- cuisine -->
     <label for="cuisine">Cuisine</label><br>
     <input type="text" name="cuisine" placeholder="greek">
@@ -45,6 +48,10 @@
     <p class="account-message">
         Already have a vendor account? <a href="/vendor-login">Log in</a>
     </p>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="javascripts/autocomplete.js"> </script>
+      <script async defer src=“https://maps.googleapis.com/maps/api/js?key=AIzaSyD3F4iXPhuKT8_vud2rTJsVDtTkB9ACAaQ&libraries=places“></script>
+
   </form>
 </body>
 </html>

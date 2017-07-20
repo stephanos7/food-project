@@ -17,6 +17,7 @@ vendorAuthRoutes.post("/vendor-signup", (req, res, next) => {
   const email       = req.body.email;
   const password    = req.body.password;
   const name        = req.body.name;
+  const location    = req.body.location;
   const cuisine     = req.body.cuisine;
   const capacity    = req.body.capacity;
   const menu        = req.body.menu;
@@ -45,8 +46,8 @@ vendorAuthRoutes.post("/vendor-signup", (req, res, next) => {
     var newVendor = Vendor({
       email,
       password: hashPass,
-      //location,
       name,
+      location: { type: 'Point', coordinates: [0,0]},
       cuisine,
       capacity,
       menu

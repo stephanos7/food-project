@@ -6,7 +6,7 @@ const vendorSchema = new Schema ({
     email    : String,
     password : String,
     name     : String,
-    //location : { type : { type : String }, coordinates : [Number]  },
+    location : { type : { type : String }, coordinates : [Number]  },
     cuisine  : String,
     capacity : Number,
     about    : String,
