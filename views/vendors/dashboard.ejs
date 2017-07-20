@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>Your Dashboard!</title>
-    <link rel='stylesheet' href='/stylesheets/normalize.css' />
-    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+    <link rel='stylesheet' href='/stylesheets/normalize.css' >
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' >
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
   </head>
@@ -27,6 +27,12 @@
         </div>
         <div class="orders main-flex-child"> 
           <h2><%= orderPrompt %></h2>
+          <ul>
+            <% theOrdersFound.forEach((element) => { %>
+            <li><%= element._orderedBy %></li>
+            <% }); %>
+          </ul>
+
         </div>
         <div class="menu main-flex-child">
           <h3 class="black-text">On your menu today:</h3>
