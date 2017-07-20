@@ -11,6 +11,8 @@ const customerAuthRoutes = require("./routes/customer-auth-routes");
 const customers = require('./routes/customers');
 const index = require('./routes/index');
 const vendors = require('./routes/vendors');
+const orders = require('./routes/orders');
+
 const vendorAuthRoutes = require("./routes/vendor-auth-routes");
 
 // sessions connection over here
@@ -64,6 +66,7 @@ app.use('/', vendorAuthRoutes);
 app.use('/', customerAuthRoutes);
 app.use('/vendors', vendors);
 app.use('/customers', customers);
+app.use('/orders', orders);
 
 
 // catch 404 and forward to error handler

@@ -62,14 +62,17 @@ function initMap() {
         }))
         //let marker = new google.maps.Marker({position,map});
 
-        let vendorHtml = `<article id="marker-${i}" class="vendor-results ${chef.cuisine} row">
-          <div class="vendor-img"> </div>
-          <div class="vendor-description">
-            <h5 class="vendor-name">${chef.name}</h5>
-            <p class="cuisine">${chef.cuisine}</p>
-          </div>
-            <a href="#" class="button get-result"> Show more</a>
-        </article>`;
+        let vendorHtml = `
+        <form id="marker-${i}" class="vendor-results ${chef.cuisine} row" action="/orders/newOrder" method="POST">
+            <div class="vendor-img"> </div>
+            <div class="vendor-description">
+              <h5 class="vendor-name">${chef.name}</h5>
+              <p class="cuisine">${chef.cuisine}</p>
+              <p class="dish">${chef.dish.dishName}</p> 
+            </div>
+            <input type="hidden" name="chef" value="${chef}">
+              <button type="submit" class="button get-result"> Order now</button>
+          </form>`;
 
         //show all of the vendors
         $("#vendorList").append(vendorHtml);
@@ -117,11 +120,11 @@ $(document).on('click', '.cuisine-logos', function (evt) {
       }
     });
   } else {
-    markersArray.forEach(function(marker){
+    markersArray.forEach(function (marker) {
       marker.setMap(map);
     })
 
-    chefCards.each(function(card){
+    chefCards.each(function (card) {
       $(this).removeClass('hidden');
     })
   }
