@@ -94,11 +94,12 @@ $(document).on('click', '.cuisine-logos', function(evt){
       takeId = $(this).attr('id');
       idNumber = takeId.split('marker-')[1];
 
-      console.log('ID to set marker to null', idNumber);
+      console.log('nulling marker # ', idNumber);
 
       markersArray[idNumber].setMap(null);
       $(this).toggleClass('hidden');
-
+      // markersArray[idNumber].setMap(map);
+      
     } 
   });
 });
