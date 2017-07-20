@@ -307,7 +307,7 @@ const initialVendorData = [{
                             dishQuantity : 6,
                             dishPrice    : 5,   
                         }
-    } 
+    }, 
 ];
 
 

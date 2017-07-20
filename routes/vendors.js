@@ -17,32 +17,35 @@ router.use((req, res, next) => {
 
 //GET DASHBOARD 
 router.get("/dashboard", (req, res, next) => {
-    //get the signed-in user's id from the Session
-    const currentUser = req.session.currentVendor;
-    const menuPrompt = "tell us what you are cooking today!";
+  //get the signed-in user's id from the Session
+  const currentUser = req.session.currentVendor;
+  const menuPrompt = "tell us what you are cooking today!";
+  const orderPrompt = "Your orders will appear here";
 
-    //query mongo with that id to get the current vendor object
-    Vendor.findById(currentUser._id, (err, theVendorFound) => {
+  //query mongo with that id to get the current vendor object
+  Vendor.findById(currentUser._id, (err, theVendorFound) => {
     var check;
-    if(err){
+      if(err){
         console.log(err);
-    }
-    if (!theVendorFound.get('dish')) {
-      check = false;
-    } else {
-      check = true;
-    }
-    console.log("the check:", check);
-    console.log(theVendorFound);
+      }
+      if (!theVendorFound.get('dish')) {
+        check = false;
+      } else {
+        check = true;
+      }
+        // console.log("the check:", check);
+       // console.log(theVendorFound);
+
 //GET ORDERS ON VENDOR DASHBOARD
-    // Order.find({"vendorEmail" : theVendorFound.emal}, (err, theOrdersFound) => {
-    // if(err){
-    //     console.log(err);
-    // }
-    
-    //pass the vendor object to the view to surface it's values
-    res.render("vendors/dashboard", { theVendorFound, check, menuPrompt});
-    })
+     Order.find({_orderedFrom : currentUser._id}, (err, theOrdersFound) => {
+      if(err){
+        return next(err);
+      }
+      console.log("these are the orders found for the vendor: ", theOrdersFound);
+      //pass the vendor object to the view to surface it's values
+      res.render("vendors/dashboard", { theVendorFound, check, menuPrompt, orderPrompt, theOrdersFound});
+      });
+    });
   });
 
 
@@ -56,14 +59,13 @@ router.post("/addbio", (req, res, next) => {
   
   const currentUser = req.session.currentVendor;
 
-
   const newBio = {
         about  : req.body.about
   }
 
-    Vendor.findByIdAndUpdate(currentUser._id, newBio, (err, theVendorFound) => {
+  Vendor.findByIdAndUpdate(currentUser._id, newBio, (err, theVendorFound) => {
     if(err){
-        return next(err);
+      return next(err);
     }
     res.redirect("/vendors/dashboard");
     });
