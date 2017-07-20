@@ -22,6 +22,7 @@ if (navigator.geolocation) {
     infoWindow.setContent('Location found.');
     infoWindow.open(map);
     map.setCenter(pos);
+   
   }, function() {
     handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -54,7 +55,7 @@ $.ajax({
         //  marker.setMap(null);
         markersArray.push(new google.maps.Marker({position,map}))
         //let marker = new google.maps.Marker({position,map});
-
+ 
         let vendorHtml = `<article id="marker-${i}" class="vendor-results ${chef.cuisine} row">
           <div class="vendor-img"> </div>
           <div class="vendor-description">
@@ -67,6 +68,10 @@ $.ajax({
         //show all of the vendors
         $("#vendorList").append(vendorHtml);
 
+        //get the info on click on the page
+    //     google.maps.event.addListener(marker, 'click', function() {
+    //       infoWindow.open(map,marker);
+    // })
         });
       },
        error: function(error){console.log(error)}
@@ -79,15 +84,20 @@ $(document).on('click', '.cuisine-logos', function(evt){
 
   var idValue   = $(this).attr('id').split('-')[0];                                                                                
   var chefCards = $(".vendor-results");
+  var takeId    = $('article').attr('id').split('marker-')[1];
+
+console.log(takeId);
 
   chefCards.each(function(){
     if (!$(this).hasClass('italian')) {
+      console.log(this);
       // Get the id of the element
       // split to get just the Number  ( number would be the index of the array of markers)
       // setMap to null for that index
+      //marker.map(null);
       $(this).toggleClass('hidden');
-    }
-  });  
+    } 
+  });
   
   
 });
