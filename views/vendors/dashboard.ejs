@@ -32,16 +32,14 @@
           <div>
             <a class="new-button" href="newdish">New Dish</a>
           </div>
+<% if(check) { %>
+<h2><%= theVendorFound.cuisine %></h2>
+<% } %>
 
-          <ul>
-            <li class="menu-item"></li> 
-            <div class = "edit-item">
-              <a class="new-button" href="editdish">Edit</a>
-            </div>
-            <div class = "edit-item">
-              <a class="new-button" href="deletedish">Delete</a>
-            </div>
-          </ul>
+<% if(!check) { %>
+<h2><%= theVendorFound.name %></h2>
+<% } %>
+
         </div> 
       </div>
     </div>
