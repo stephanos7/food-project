@@ -9,6 +9,7 @@ const vendorSchema = new Schema ({
     //location : { type : { type : String }, coordinates : [Number]  },
     cuisine  : String,
     capacity : Number,
+    about    : String,
     dish     : Dish.schema
  }, {
     timeStamps : {
@@ -18,7 +19,6 @@ const vendorSchema = new Schema ({
 });
 
 //vendorSchema.index({ location: '2dsphere' });
-
 const Vendor = mongoose.model("Vendor", vendorSchema);
 
 module.exports = Vendor;
