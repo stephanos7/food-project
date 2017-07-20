@@ -6,7 +6,7 @@ const vendorSchema = new Schema ({
     email    : String,
     password : String,
     name     : String,
-    location : { type : { type : String }, coordinates : [Number]  },
+    //location : { type : { type : String }, coordinates : [Number]  },
     cuisine  : String,
     capacity : Number,
     dish     : Dish.schema
@@ -17,7 +17,7 @@ const vendorSchema = new Schema ({
     }
 });
 
-vendorSchema.index({ location: '2dsphere' });
+//vendorSchema.index({ location: '2dsphere' });
 
 const Vendor = mongoose.model("Vendor", vendorSchema);
 
