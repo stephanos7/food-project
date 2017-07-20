@@ -15,6 +15,26 @@ router.use((req, res, next) => {
 });
 
 
+//RENDER ADD BIO TO YOUR PROFILE
+router.get("/addbio", (req, res, next) => {
+        res.render("vendors/addbio");
+});
+
+//POST NEW BIO TO BE INCLUDED ON YOUR PROFILE
+router.post("/addbio", (req, res, next) => { 
+  
+  const currentUser = req.session.currentVendor;
+
+  const newBio = {
+        about  : req.body.about
+  }
+
+    Vendor.findByIdAndUpdate(currentUser._id, newBio, (err, theVendorFound) => {
+  if (req.session.currentVendor) { next(); }
+  else { res.redirect("/vendor-login");  }
+  });
+});
+
 //GET DASHBOARD 
 router.get("/dashboard", (req, res, next) => {
     //get the signed-in user's id from the Session
@@ -45,9 +65,9 @@ router.get("/dashboard", (req, res, next) => {
  });
 
 //RENDER ADD BIO TO YOUR PROFILE
-router.get("/addbio", (req, res, next) => {
-        res.render("vendors/addbio");
-});
+// router.get("/addbio", (req, res, next) => {
+//         res.render("vendors/addbio");
+// });
 
 // //POST NEW BIO TO BE INCLUDED ON YOUR PROFILE
 // router.post("/addbio", (req, res, next) => { 
@@ -67,15 +87,26 @@ router.get("/newdish", (req, res, next) => {
         res.render("vendors/newdish");
 });
 
+    
+//     //pass the vendor object to the view to surface it’s values
+//     res.render("vendors/dashboard", {theVendorFound});
+
+// });
+
+
+
 //POST NEW DISH TO BE INCLUDED IN THE MENU
 router.post("/newdish", (req, res, next) => { 
+  
   const currentUser = req.session.currentVendor;
+
   const newDish = {
           dishName    : req.body.dishName,
           dishQuantity: req.body.dishQuantity,
           dishPrice   : req.body.dishPrice
-  };
-  Vendor.findByIdAndUpdate(currentUser._id, newDish, (err, theVendorFound) => {
+  }
+
+    Vendor.findByIdAndUpdate(currentUser._id, newDish, (err, theVendorFound) => {
     if(err){
         return next(err);
     }

@@ -20,8 +20,7 @@ vendorAuthRoutes.post("/vendor-signup", (req, res, next) => {
   const name        = req.body.name;
   const cuisine     = req.body.cuisine;
   const capacity    = req.body.capacity;
-  let dish;
-  let about;
+ 
 
 //VALIDATE THAT REQUIRED INFO IS PROVIDED
   if (email === "" || password === "") {
@@ -58,8 +57,7 @@ vendorAuthRoutes.post("/vendor-signup", (req, res, next) => {
       location,
       cuisine,
       capacity,
-      about,
-      dish
+
    });
 
 //SAVE VENDOR IN THE DB
