@@ -1,4 +1,5 @@
 var map, infoWindow;
+var markersArray = [];
 
 function initMap() {
        map = new google.maps.Map(document.getElementById('map'), {
@@ -44,7 +45,6 @@ $.ajax({
       url: "http://localhost:3000/customers/search/json",
       type: "get",
       success: function(response){
-        var markersArray = [];
         response.forEach(function(chef, i){
           let position = {
             lat: chef.location.coordinates[1],
@@ -82,22 +82,23 @@ $.ajax({
 //hide all the vendors on healthy cuisine click
 $(document).on('click', '.cuisine-logos', function(evt){
 
-  var idValue   = $(this).attr('id').split('-')[0];                                                                                
-  var chefCards = $(".vendor-results");
-  var takeId    = $('article').attr('id').split('marker-')[1];
+  var cuisineName = $(this).attr('id').split('-')[0];                                                                                
+  var chefCards   = $(".vendor-results");
+  var takeId, idNumber;
 
-console.log(takeId);
 
+  chefCards.removeClass('hidden');
   chefCards.each(function(){
-    if (!$(this).hasClass('italian')) {
-      console.log(this);
-      // Get the id of the element
-      // split to get just the Number  ( number would be the index of the array of markers)
-      // setMap to null for that index
-      //marker.map(null);
+    if (!$(this).hasClass(cuisineName)) {
+
+      takeId = $(this).attr('id');
+      idNumber = takeId.split('marker-')[1];
+
+      console.log('ID to set marker to null', idNumber);
+
+      markersArray[idNumber].setMap(null);
       $(this).toggleClass('hidden');
+
     } 
   });
-  
-  
 });
