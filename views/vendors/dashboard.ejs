@@ -33,11 +33,11 @@
             <a class="new-button" href="newdish">New Dish</a>
           </div>
 <% if(check) { %>
-<h2><%= theVendorFound.cuisine %></h2>
+<h2><%= theVendorFound.dish.dishName %></h2>
 <% } %>
 
 <% if(!check) { %>
-<h2><%= theVendorFound.name %></h2>
+<h2><%= theVendorFound.dish %></h2>
 <% } %>
 
         </div> 
