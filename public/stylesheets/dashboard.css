@@ -1,3 +1,11 @@
+a{
+  text-decoration: none;
+}
+ul, li{
+  list-style: none;
+  padding: 0;
+}
+
 .black-text{
   color: black;
 }
@@ -11,9 +19,9 @@
 }
 
 .navbar{
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: "Lato", sans-serif;
-  padding: 24px;
+  padding: 10px 24px;
 }
 
 .main-flex-parent{
@@ -27,32 +35,78 @@
 .main-flex-child{
   margin-top: 1%;
   margin-bottom: 1%;
-  padding: 10px;
+  padding: 14px;
 }
+
+
 
 .about{
   background-color:#afe8f4;
-  width: 62%;
+  width: 61%;
 }
 
 .orders{
   background-color: #effafc;
-  width: 33%;
+  width: 32%;
   
 }
 
 .menu{
  background-color: #7fdaee;
+ width: 61%;
 }
 
 .info-box{
 
 }
 
-.new-button{
+.new-button {
   color: black;
   background-color: transparent;
   border: 1px solid black;
   border-radius: 3px;
   padding: 5px;
+}
+
+.small-button {
+  color: black;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.tag-button {
+  color: white;
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.new-button:hover{
+  background-color: white;
+  border: 1px solid white;
+}
+
+.menu-list{
+  width: 90%;
+}
+
+.menu-item{
+  display: inline-block;
+  width: 60%;
+  padding: 5px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.edit-item{
+    display: inline-block;
+    float:right;
+    margin-right: 5px;
 }

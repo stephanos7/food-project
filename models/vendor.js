@@ -9,6 +9,7 @@ const vendorSchema = new Schema ({
     //location : { type : { type : String }, coordinates : [Number]  },
     cuisine  : String,
     capacity : Number,
+    about    : String,
     menu     : [Dish.schema]
  }, {
     timeStamps : {
