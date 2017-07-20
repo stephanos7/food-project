@@ -25,12 +25,34 @@
     <input type="text" name="name" placeholder="atgrandmas">
     <br><br>
     <!-- location  -->
-    <label for='Address' class="form__label">
-    <span>Address</span>
-    </label>
-    <input id="address" type="text">
-    <input id="latitude" type="text" name="latitude" placeholder="Latitude" >
-    <input id="longitude" type="text" name="longitude" placeholder="Longitude">
+    <div id="locationField">
+      <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+    </div>
+    <table id="address">
+      <tr>
+        <td class="label">Street address</td>
+        <td class="slimField"><input class="field" id="street_number" disabled="true"></input></td>
+        <td class="wideField" colspan="2"><input class="field" id="route" disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">City</td>
+        <!-- Note: Selection of address components in this example is typical.
+             You may need to adjust it for the locations relevant to your app. See
+             https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+        -->
+        <td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">State</td>
+        <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="true"></input></td>
+        <td class="label">Zip code</td>
+        <td class="wideField"><input class="field" id="postal_code" disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">Country</td>
+        <td class="wideField" colspan="3"><input class="field" id="country" disabled="true"></input></td>
+      </tr>
+    </table>
     <!-- cuisine -->
     <label for="cuisine">Cuisine</label><br>
     <input type="text" name="cuisine" placeholder="greek">
@@ -39,7 +61,10 @@
     <label for="capacity">Capacity</label><br>
     <input type="text" name="capacity" placeholder="10">
     <br><br>
-
+    <!-- hidden lat long -->
+    <input type="hidden" name="latitude" placeholder="..." id="latitude">
+    <input type="hidden" name="longitude" placeholder="..." id="longitude">
+    <br><br>
     <% if (typeof(errorMessage) != "undefined") { %>
         <div class="error-message"><%= errorMessage %></div>
     <% } %>
@@ -48,9 +73,9 @@
     <p class="account-message">
         Already have a vendor account? <a href="/vendor-login">Log in</a>
     </p>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="javascripts/autocomplete.js"> </script>
-      <script async defer src=“https://maps.googleapis.com/maps/api/js?key=AIzaSyD3F4iXPhuKT8_vud2rTJsVDtTkB9ACAaQ&libraries=places“></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="javascripts/autocomplete.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3F4iXPhuKT8_vud2rTJsVDtTkB9ACAaQ&libraries=places&callback=initAutocomplete" async defer></script>
 
   </form>
 </body>

@@ -14,13 +14,14 @@ vendorAuthRoutes.get("/vendor-signup", (req, res, next) => {
 
 //POST SIGNUP INFO
 vendorAuthRoutes.post("/vendor-signup", (req, res, next) => {
+
   const email       = req.body.email;
   const password    = req.body.password;
   const name        = req.body.name;
-  const location    = req.body.location;
   const cuisine     = req.body.cuisine;
   const capacity    = req.body.capacity;
-  const menu        = req.body.menu;
+  let dish;
+  let about;
 
 //VALIDATE THAT REQUIRED INFO IS PROVIDED
   if (email === "" || password === "") {
@@ -42,16 +43,24 @@ vendorAuthRoutes.post("/vendor-signup", (req, res, next) => {
 //ENCRYPT THE PASSWORD USING BCRYPT
     var salt     = bcrypt.genSaltSync(bcryptSalt);
     var hashPass = bcrypt.hashSync(password, salt);
+  
+    let location = {
+    type: 'Point',
+    coordinates: [req.body.longitude, req.body.latitude]
+  };
+
+    console.log('we are getting this loc: ', location);
 
     var newVendor = Vendor({
       email,
       password: hashPass,
       name,
-      location: { type: 'Point', coordinates: [0,0]},
+      location,
       cuisine,
       capacity,
-      menu
-    });
+      about,
+      dish
+   });
 
 //SAVE VENDOR IN THE DB
     newVendor.save((err) => {
@@ -76,7 +85,6 @@ vendorAuthRoutes.get("/vendor-login", (req, res, next) => {
 //POST LOGIN INFO
 vendorAuthRoutes.post("/vendor-login", (req, res, next) => {
   var email = req.body.email;
-  var name = req.body.name;
   var password = req.body.password;
 
 //VALIDATE THAT REQUIRED INFO IS PROVIDED

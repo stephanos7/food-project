@@ -45,7 +45,7 @@ function initMap() {
   }
 
   $.ajax({
-    url: "http://localhost:3000/customers/search/json",
+    url: "4",
     type: "get",
     success: function (response) {
       response.forEach(function (chef, i) {
@@ -69,6 +69,8 @@ function initMap() {
               <h5 class="vendor-name">${chef.name}</h5>
               <p class="cuisine">${chef.cuisine}</p>
               <p class="dish">${chef.dish.dishName}</p> 
+              <p class="dish">${chef.dish.dishPrice}</p> 
+
             </div>
             <input type="hidden" name="chefId" value="${chef._id}">
             <input type="hidden" name="orderedItem" value="${chef.dish._id}">

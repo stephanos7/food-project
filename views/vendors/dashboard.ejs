@@ -4,68 +4,49 @@
     <title>Your Dashboard!</title>
     <link rel='stylesheet' href='/stylesheets/normalize.css' />
     <link rel='stylesheet' href='/stylesheets/dashboard.css' />
-    
-
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-
-
-
-
+  </head>
   <body>
-
-    <!-- NAVBAR -->
+    <!-- NAVBAR HERE -->
     <nav class="navbar">
-    <h2>Welcome to your dashboard <%= theVendorFound.name %>:)</h2>
-    <div>
-      Cuisines: <a class="tag-button"><%= theVendorFound.cuisine %></a>
-    </div>
-
+      <h2>Welcome to your dashboard <%= theVendorFound.name %> :)</h2>
+      <div>
+        Cuisines: <a class="tag-button"><%= theVendorFound.cuisine %></a>
+      </div>
     </nav>
-
     <!-- FLEXBOX LAYOUT -->
     <div class="wrapper">
       <div class="main-flex-parent">
-
         <div class="about main-flex-child">
           <div class="info-box">
-              <p class="bio"><%= theVendorFound.about %><p>
-              <div>
-                <a class="new-button" href="addbio">Edit</a>
-              <br>
+            <p class="bio"><%= theVendorFound.about %><p>
           </div>
-          </div>
+            <a class="new-button" href="addbio">Edit</a>
+            <br>
         </div>
-
-        <div class="orders main-flex-child">
-        
-
-        </div>
-
+        <div class="orders main-flex-child"> </div>
         <div class="menu main-flex-child">
           <h3 class="black-text">On your menu today:</h3>
-
+          
           <div>
-              <a class="new-button" href="newdish">New Dish</a>
+            <a class="new-button" href="newdish">New Dish</a>
           </div>
 
-          <ul><% theVendorFound.menu.forEach((element) =>{ %>
-            <li class="menu-item"><%= element.dishName %> | Qty: <%= element.dishQuantity %> | $ <%= element.dishPrice %></li>
+          <ul>
+            if(theVendorFound.dish === undefined) 
+            <li class="menu-item"><% theVendorFound.dish %></li> 
             <div class = "edit-item">
-                <a class="new-button" href="editdish">Edit</a>
+              <a class="new-button" href="editdish">Edit</a>
             </div>
             <div class = "edit-item">
-                <a class="new-button" href="deletedish">Delete</a>
+              <a class="new-button" href="deletedish">Delete</a>
             </div>
-            <% }); %>
-
           </ul>
-
-
-       </div> 
-
+        </div> 
       </div>
-     </div>
+    </div>
+
 
   </body>
 </html>

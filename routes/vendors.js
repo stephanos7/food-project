@@ -18,43 +18,49 @@ router.use((req, res, next) => {
 //GET DASHBOARD 
 router.get("/dashboard", (req, res, next) => {
     //get the signed-in user's id from the Session
-    const currentUser = req.session.currentVendor;
-
+    const currentVendorID = req.session.currentVendor._id;
+    console.log('dashboard', req.session.currentVendor)
     //query mongo with that id to get the current vendor object
-    // Vendor.findById(currentUser._id, (err, theVendorFound) => {
-    // if(err){
-    //     console.log(err);
-    // }
-    // return theVendorFound;
-//GET ORDERS ON VENDOR DASHBOARD
-    Order.find({ _orderedFrom : currentUser._id} , (err, theOrdersFound) => {
-    if(err){
-        console.log(err);
-    }
-    console.log(theOrdersFound);
-    
-    //pass the vendor object to the view to surface it's values
-    res.render("vendors/dashboard", {theVendorFound})
-    })
+    Vendor.findById( currentVendorID, (err, theVendorFound) => {
+      if( err ){
+        console.log('error')
+        return next(err)    
+      } else {
+        console.log('no error', theVendorFound)
+        res.render("vendors/dashboard", { theVendorFound })
+        // res.send(JSON.stringify(theVendorFound));
+      }
+      
+      // return theVendorFound;
+  //GET ORDERS ON VENDOR DASHBOARD
+      // Order.find({ _orderedFrom : currentUser._id} , (err, theOrdersFound) => {
+      // if(err){
+      //     console.log(err);
+      // }
+      // console.log(theOrdersFound);
+      
+      //pass the vendor object to the view to surface it's values
+      
     });
+ });
 
 //RENDER ADD BIO TO YOUR PROFILE
 router.get("/addbio", (req, res, next) => {
         res.render("vendors/addbio");
 });
 
-//POST NEW BIO TO BE INCLUDED ON YOUR PROFILE
-router.post("/addbio", (req, res, next) => { 
-  const currentUser = req.session.currentVendor;
-  const newBio = {
-        about  : req.body.about
-        }
+// //POST NEW BIO TO BE INCLUDED ON YOUR PROFILE
+// router.post("/addbio", (req, res, next) => { 
+//   const currentUser = req.session.currentVendor;
+//   const newBio = {
+//         about  : req.body.about
+//         }
 
-  Vendor.findByIdAndUpdate(currentUser._id, newBio, (err, theVendorFound) => {
-    if (req.session.currentVendor) { next(); }
-    else { res.redirect("/vendor-login");  }
-  })
-});
+//   Vendor.findByIdAndUpdate(currentUser._id, newBio, (err, theVendorFound) => {
+//   if (req.session.currentVendor) { next(); }
+//   else { res.redirect("/vendor-login");  }
+//   })
+// });
 
 //RENDER ADD A NEW DISH TO YOUR MENU
 router.get("/newdish", (req, res, next) => {
@@ -68,8 +74,8 @@ router.post("/newdish", (req, res, next) => {
           dishName    : req.body.dishName,
           dishQuantity: req.body.dishQuantity,
           dishPrice   : req.body.dishPrice
-  }
-  Vendor.findByIdAndUpdate(currentUser._id, {$push: {menu:newDish}}, (err, theVendorFound) => {
+  };
+  Vendor.findByIdAndUpdate(currentUser._id, newDish, (err, theVendorFound) => {
     if(err){
         return next(err);
     }
@@ -78,4 +84,3 @@ router.post("/newdish", (req, res, next) => {
 });
 
 module.exports = router;
-
