@@ -12,10 +12,10 @@ const initialVendorData = [{
                     },
         cuisine   : "spanish",
         capacity  : 20,
-        dish      :   {
-                            dishName    : "Paella",
-                            dishQuantity : 20,
-                            dishPrice     : 9,   
+        dish      : {
+                     dishName    : "Paella",
+                     dishQuantity : 20,
+                     dishPrice     : 9,   
                     }
                
     
@@ -29,15 +29,11 @@ const initialVendorData = [{
                      },
         cuisine    : "italian",
         capacity   : 9,
-        dish      : 
-                        {
-                            dishName    : "Pizza",
-                            dishQuantity : 9,
-                            dishPrice     : 5,   
-                        }
-    }                       
- /*                
-    
+        dish      : {
+                      dishName    : "Pizza",
+                      dishQuantity : 9,
+                      dishPrice     : 5,   
+                    }
     },
     {
         email       : "nicola@gmail.com",
@@ -48,13 +44,12 @@ const initialVendorData = [{
                       },        
         cuisine     : "italian",
         capacity    : 12,
-        dish      : [
-                        {
-                            dishName    : "Lasagna alla Bolognese",
-                            dishQuantity : 12,
-                            dishPrice     : 5,   
-                        }
-                    ]
+        dish      :   {
+                        dishName    : "Lasagna alla Bolognese",
+                        dishQuantity : 12,
+                        dishPrice     : 5,   
+                      }
+                    
 
     },
     {
@@ -66,13 +61,11 @@ const initialVendorData = [{
                       }, 
         cuisine     : "italian",
         capacity    : 4,
-        dish        : [
-                        {
-                            dishName     : "Cotoletta alla milanese",
-                            dishQuantity : 4,
-                            dishPrice    : 5,   
+        dish        :{
+                      dishName     : "Cotoletta alla milanese",
+                      dishQuantity : 4,
+                      dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "riccardo@gmail.com",
@@ -83,13 +76,11 @@ const initialVendorData = [{
                       }, 
         cuisine     : "italian",
         capacity    : 10,
-        dish      : [
-                        {
+        dish      : {
                             dishName     : "Pasta alla Carbonara",
                             dishQuantity : 10,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "camila@ccc.com",
@@ -100,13 +91,11 @@ const initialVendorData = [{
                       }, 
         cuisine     : "spanish",
         capacity    : 5,
-        dish      : [
-                        {
+        dish      : {
                             dishName     : "Tortilla de Patatas",
                             dishQuantity : 5,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "gregory@byrne.at",
@@ -117,13 +106,12 @@ const initialVendorData = [{
                       }, 
         cuisine     : "american",
         capacity    : 4,
-        dish      : [
+        dish      : 
                         {
                             dishName     : "Hamburgers",
                             dishQuantity : 4,
                             dishPrice    : 5,   
                         }
-                    ]
     }, 
     {
         email       : "joyce@heller.do",
@@ -134,13 +122,11 @@ const initialVendorData = [{
                       },
         cuisine     : "american",
         capacity    : 10,
-        dish      : [
-                        {
-                            dishName     : "BBB - Best Burgers in Barcelona",
-                            dishQuantity : 10,
-                            dishPrice    : 5,   
+        dish        : {
+                        dishName     : "BBB - Best Burgers in Barcelona",
+                        dishQuantity : 10,
+                        dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -151,13 +137,11 @@ const initialVendorData = [{
                       },
         cuisine     : "spanish",
         capacity    : 20,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Tapas",
                             dishQuantity : 20,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -168,13 +152,11 @@ const initialVendorData = [{
                       },
         cuisine     : "spanish",
         capacity    : 10,
-        dish      : [
-                        {
+        dish      :  {
                             dishName     : "Bocadillos",
                             dishQuantity : 10,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -185,13 +167,11 @@ const initialVendorData = [{
                       },
         cuisine     : "international",
         capacity    : 13,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Temakis Fantasy",
                             dishQuantity : 13,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -202,13 +182,11 @@ const initialVendorData = [{
                       },
         cuisine     : "international",
         capacity    : 20,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Nigiri Passion",
                             dishQuantity : 20,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -219,13 +197,11 @@ const initialVendorData = [{
                       },
         cuisine     : "healthy",
         capacity    : 10,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Vegan Bowls",
                             dishQuantity : 10,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -236,13 +212,11 @@ const initialVendorData = [{
                       },
         cuisine     : "healthy",
         capacity    : 14,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Avocado Bruschettas",
                             dishQuantity : 14,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -253,13 +227,11 @@ const initialVendorData = [{
                       },
         cuisine     : "healthy",
         capacity    : 6,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Tofu Burgers",
                             dishQuantity : 6,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -270,13 +242,11 @@ const initialVendorData = [{
                       },
         cuisine     : "healthy",
         capacity    : 20,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Juicy Smoothies",
                             dishQuantity : 20,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -287,13 +257,11 @@ const initialVendorData = [{
                       },
         cuisine     : "greek",
         capacity    : 12,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Greek Salads",
                             dishQuantity : 12,
                             dishPrice    : 5,   
                         }
-                    ]
     }, 
     {
         email       : "allen@rao.gp",
@@ -304,13 +272,11 @@ const initialVendorData = [{
                       },
         cuisine     : "greek",
         capacity    : 5,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Dakos",
                             dishQuantity : 5,
                             dishPrice    : 5,   
                         }
-                    ]
     }, 
     {
         email       : "allen@rao.gp",
@@ -321,13 +287,11 @@ const initialVendorData = [{
                       },
         cuisine     : "greek",
         capacity    : 10,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Calamares Fritos",
                             dishQuantity : 10,
                             dishPrice    : 5,   
                         }
-                    ]
     },
     {
         email       : "allen@rao.gp",
@@ -338,15 +302,12 @@ const initialVendorData = [{
                       },
         cuisine     : "greek",
         capacity    : 6,
-        dish      : [
-                        {
+        dish        : {
                             dishName     : "Original Tzatziki Bar",
                             dishQuantity : 6,
                             dishPrice    : 5,   
                         }
-                    ]
     } 
-                */                                                                                               
 ];
 
 

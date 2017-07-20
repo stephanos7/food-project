@@ -37,18 +37,18 @@ router.post("/newOrder", (req, res, next) => {
 //render order confirmation page
 router.get("/order-confirmation", (req, res, next) => {
 
-  const custo = req.session.currentCustomer;
-  console.log("this is the customer we get from sess: ", custo);
+  // const custo = req.session.currentCustomer;
+  // console.log("this is the customer we get from sess: ", custo);
 
-  Order.findOne({ _orderedBy : custo._id} , (err, theOrderFound) => {
-      if(err){
-        console.log(err);
-      }
-        console.log(theOrderFound);
-    });
+  // Order.findOne({ _orderedBy : custo._id} , (err, theOrderFound) => {
+  //     if(err){
+  //       console.log(err);
+  //     }
+  //       console.log(theOrderFound);
+  //   });
 
 
-res.render("orders/order-confirmation", {theOrderFound});
+res.render("orders/order-confirmation");
 });
 
 
