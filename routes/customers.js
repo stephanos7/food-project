@@ -22,7 +22,7 @@ router.get("/search", (req, res, next) => {
   );
 });
 
-//FORMAT TO PAST VENDOR'S DATA INTO THE GOOGLE MAP
+//FORMAT TO PASS VENDOR'S DATA INTO THE GOOGLE MAP
 router.get("/search/:format", (req, res, next) => {
     Vendor.find((error, vendors) => {
     if (error) { next(error); }
@@ -31,5 +31,12 @@ router.get("/search/:format", (req, res, next) => {
     }
   })
 });
+
+router.get("/dummy", (req, res, next) => {
+  const customerOrdering = req.session.currentCustomer;
+    console.log(customerOrdering);
+
+    res.render("customers/dummy", { customerOrdering });
+  });
 
 module.exports = router;

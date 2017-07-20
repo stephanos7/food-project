@@ -31,15 +31,39 @@ router.get("/dashboard", (req, res, next) => {
     Order.find({"vendorEmail" : theVendorFound.emal}, (err, theOrdersFound) => {
     if(err){
         console.log(err);
-    }else{
-    console.log(theOrdersFound);
     }
+        console.log(theOrdersFound);
+        console.log(theVendorFound.cuisine)
     //pass the vendor object to the view to surface it's values
     res.render("vendors/dashboard", { theVendorFound })
     })
     });
 });
-//ADD A NEW DISH TO YOUR MENU
+
+//RENDER ADD BIO TO YOUR PROFILE
+router.get("/addbio", (req, res, next) => {
+        res.render("vendors/addbio");
+});
+
+//POST NEW BIO TO BE INCLUDED ON YOUR PROFILE
+router.post("/addbio", (req, res, next) => { 
+  
+  const currentUser = req.session.currentVendor;
+
+  const newBio = {
+        about  : req.body.about
+  }
+
+    Vendor.findByIdAndUpdate(currentUser._id, newBio, (err, theVendorFound) => {
+    if(err){
+        return next(err);
+    }
+    res.redirect("/vendors/dashboard");
+    });
+
+});
+
+//RENDER ADD A NEW DISH TO YOUR MENU
 router.get("/newdish", (req, res, next) => {
         res.render("vendors/newdish");
 });
@@ -48,8 +72,6 @@ router.get("/newdish", (req, res, next) => {
 router.post("/newdish", (req, res, next) => { 
   
   const currentUser = req.session.currentVendor;
-//   //debug
-//   console.log("this is the current user ::::", currentUser);
 
   const newDish = {
           dishName    : req.body.dishName,
@@ -63,7 +85,6 @@ router.post("/newdish", (req, res, next) => {
     }
     res.redirect("/vendors/dashboard");
     });
-
 });
 
 
