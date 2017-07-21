@@ -22,6 +22,8 @@ pip-delete-this-directory.txt
 
 
 # OS or Editor folders
+env
+.env
 ._*
 .cache
 .Cache
