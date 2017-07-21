@@ -29,7 +29,7 @@
           <h2><%= orderPrompt %></h2>
           <ul>
             <% theOrdersFound.forEach((element) => { %>
-            <li><%= element._orderedBy %></li>
+            <li><%= element._orderedBy %><%= theCustomerFound.username %></li>
             <% }); %>
           </ul>
 
@@ -38,7 +38,7 @@
           <h3 class="black-text">On your menu today:</h3>
           
           <div>
-            <a class="new-button" href="newdish">New Dish</a>
+            <a class="new-button" href="newdish">Edit Dish</a>
           </div>
 <% if(check) { %>
 <h2><%= theVendorFound.dish.dishName %></h2>

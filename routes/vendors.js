@@ -2,6 +2,7 @@ const express        = require('express');
 const Vendor         = require('../models/vendor');
 const Dish           = require("../models/dish");
 const Order          = require("../models/order");
+const Customer       = require("../models/customer");
 const router         = express.Router();
 const session        = require("express-session");
 const customerData   = require('connect-mongo') (session);
@@ -33,21 +34,44 @@ router.get("/dashboard", (req, res, next) => {
       } else {
         check = true;
       }
+      return theVendorFound;
+      });
         // console.log("the check:", check);
        // console.log(theVendorFound);
 
 //GET ORDERS ON VENDOR DASHBOARD
-     Order.find({_orderedFrom : currentUser._id}, (err, theOrdersFound) => {
+      Order.find({_orderedFrom : currentUser._id}, (err, theOrdersFound) => {
       if(err){
         return next(err);
+      }else{
+        return theOrdersFound;
       }
+      });
+
+      Customer.find({username : theOrdersFound._orderedFrom }, (err, theCustomerFound) => {
+      if(err){
+        return next(err);
+      }else{
+        return theCustomerFound;
+      }
+      });
+      console.log("this is the customer i found: ", theCustomerFound);
+
       console.log("these are the orders found for the vendor: ", theOrdersFound);
       //pass the vendor object to the view to surface it's values
-      res.render("vendors/dashboard", { theVendorFound, check, menuPrompt, orderPrompt, theOrdersFound});
+      res.render("vendors/dashboard", { theVendorFound, check, menuPrompt, orderPrompt, theOrdersFound, theCustomerFound });
       });
-    });
-  });
+  
 
+// router.get("/dashboard", (req, res, next) => {
+//       Customer.find({username : theOrdersFound._orderedFrom }, (err, theCustomerFound) => {
+//       if(err){
+//         return next(err);
+//       }
+//       console.log("this is the customer i found: ", theCustomerFound);
+//       res.send("this is the customer i found: ", theCustomerFound);
+// });
+// });
 
 //RENDER ADD BIO TO YOUR PROFILE
 router.get("/addbio", (req, res, next) => {
@@ -87,6 +111,8 @@ router.post("/newdish", (req, res, next) => {
           dishQuantity: req.body.dishQuantity,
           dishPrice   : req.body.dishPrice
   }
+
+  
 
     Vendor.findByIdAndUpdate(currentUser._id, { $set: { dish : newDish }}, (err, vendorFound) => {
     if(err){
