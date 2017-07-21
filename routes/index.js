@@ -18,5 +18,5 @@ router.get('/allvendors', function(req, res, next) {
     res.render('allvendors', {vendorList});
   });
 });
-
+//
 module.exports = router;
