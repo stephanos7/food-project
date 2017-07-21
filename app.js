@@ -27,7 +27,7 @@ const vendorData     = require('connect-mongo') (session);
 
 // Mongoose configuration
 const mongoose       = require("mongoose");
-mongoose.connect("pheroku_dh8lk2qg:rjk2ircjr82ajlr6ob08mavui8@ds011830.mlab.com:11830/heroku_dh8lk2qg");
+mongoose.connect("process.env.MONGODB_URI");
 
 // Middlewares configuration
 app.use(logger("dev"));
